@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ajax是一种技术方案，但并不是一种新技术。它依赖的是现有的CSS&#x2F;HTML&#x2F;Javascript，而其中最核心的依赖是浏览器提供的XMLHttpRequest对象，是这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/09/14/ajax/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="ajax是一种技术方案，但并不是一种新技术。它依赖的是现有的CSS&#x2F;HTML&#x2F;Javascript，而其中最核心的依赖是浏览器提供的XMLHttpRequest对象，是这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。">
+<meta property="article:published_time" content="2018-09-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-05T04:29:28.000Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/09/14/ajax/"/>
+
+
+
+
+
+  <title>ajax | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">09月</div>
+			<div class="post-day">14</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/JavaScript/" itemprop="url" rel="index">
+          <span itemprop="name">JavaScript</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/09/14/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ajax</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-14T00:00:00+08:00">
+                2018-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ajax是一种技术方案，但并不是一种新技术。它依赖的是现有的CSS/HTML/Javascript，而其中最核心的依赖是浏览器提供的XMLHttpRequest对象，是这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。</p>
+<a id="more"></a>
+
+<p>使用XMLHttpRequest对象来发送一个Ajax请求。</p>
+<h5 id="XMLHttpRequest-level-2新增功能"><a href="#XMLHttpRequest-level-2新增功能" class="headerlink" title="XMLHttpRequest level 2新增功能"></a><strong>XMLHttpRequest level 2新增功能</strong></h5><ul>
+<li>可以发送跨域请求，在服务端允许的情况下；</li>
+<li>支持发送和接收二进制数据；</li>
+<li>新增formData对象，支持发送表单数据；</li>
+<li>发送和获取数据时，可以获取进度信息；</li>
+<li>可以设置请求的超时时间；</li>
+</ul>
+<h5 id="指定xhr-response的数据类型"><a href="#指定xhr-response的数据类型" class="headerlink" title="指定xhr.response的数据类型"></a><strong>指定xhr.response的数据类型</strong></h5><p>xhr.responseType(‘’/‘text’/‘document’/‘json’/‘blob’/‘arrayBuffer’)</p>
+<h5 id="获取response数据"><a href="#获取response数据" class="headerlink" title="获取response数据"></a>获取response数据</h5><p>xhr.response/xhr.responseText/xhr.responseXML(与responseType有关)</p>
+<h5 id="ajax的状态"><a href="#ajax的状态" class="headerlink" title="ajax的状态"></a><strong>ajax的状态</strong></h5><p>responseState<br>| 值       | 状态   |  描述  |<br>| ——–   | —–:  | :—-:  |<br>| 0     | UNSET |   此时xhr对象被成功构造，open()方法还未被调用    |<br>| 1        |   OPENED   |   open()方法已经被成功调用，send()还未调用.注意：只有xhr处于OPENED状态，才能调用xhr.setRequestHeader()和xhr.send()，否则会报错   |<br>| 2        |HEADERS_RECEIVED    |  send()方法已经被调用，响应头和响应状态已经返回  |<br>| 3        | LOADING  | 响应体正在下载中，此状态下通过xhr.response可能已经有了响应数据|<br>|4  |    DONE | 整个传输过程结束，无论成功or失败|</p>
+<h5 id="设置请求的超时时间"><a href="#设置请求的超时时间" class="headerlink" title="设置请求的超时时间"></a><strong>设置请求的超时时间</strong></h5><p>xhr.timeout<br>请求开始的时间是指xhr.send()方法，send()方法才是真正开始了数据的传输过程，只有调用xhr.send()才会触发xhr.onloadstart和ontimeout，请求结束的时间指xhr.loadend时间触发的时候。</p>
+<h5 id="ajax发去同步请求"><a href="#ajax发去同步请求" class="headerlink" title="ajax发去同步请求"></a><strong>ajax发去同步请求</strong></h5><p>xhr.open(‘GET’,’url’,false)<br>会有如下限制，一旦不满足就有报错，尽量减少使用同步请求</p>
+<ul>
+<li>xhr.timeout必须为0</li>
+<li>xhr.withCredentials必须为 false</li>
+<li>xhr.responseType必须为””（注意置为”text”也不允许）</li>
+</ul>
+<h5 id="ajax获取上传、下载进度"><a href="#ajax获取上传、下载进度" class="headerlink" title="ajax获取上传、下载进度"></a><strong>ajax获取上传、下载进度</strong></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">xhr.onprogress &#x3D; updateProgress; &#x2F;&#x2F;下载</span><br><span class="line">xhr.upload.onprogress &#x3D; updateProgress;  &#x2F;&#x2F;上传</span><br><span class="line">function updateProgress(event) &#123;</span><br><span class="line">    if (event.lengthComputable) &#123;</span><br><span class="line">      var completedPercent &#x3D; event.loaded &#x2F; event.total;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="ajax可以发送什么类型的数据"><a href="#ajax可以发送什么类型的数据" class="headerlink" title="ajax可以发送什么类型的数据"></a><strong>ajax可以发送什么类型的数据</strong></h5><p>void send(data)<br>data可以是Array，BufferBlob， Document， DOMString， FormData， null。</p>
+<p>如果data是 Document 类型，同时也是HTML Document类型，则content-type默认值为text/html;charset=UTF-8;否则为application/xml;charset=UTF-8；</p>
+<p>如果data是 DOMString 类型，content-type默认值为text/plain;charset=UTF-8；</p>
+<p>如果data是 FormData 类型，content-type默认值为multipart/form-data; boundary=[xxx]</p>
+<p>如果data是其他类型，则不会设置content-type的默认值。</p>
+<p>如果用xhr.setRequestHeader()手动设置了中content-type的值，以上默认值就会被覆盖。</p>
+<h5 id="xhr-withCredentials"><a href="#xhr-withCredentials" class="headerlink" title="xhr.withCredentials"></a><strong>xhr.withCredentials</strong></h5><p>在CORS标准中做了规定，默认情况下，浏览器在发送跨域请求时，不能发送任何认证信息（credentials）如”cookies”和”HTTP authentication schemes”。除非xhr.withCredentials为true（xhr对象有一个属性叫withCredentials，默认值为false）。<br>所以根本原因是cookies也是一种认证信息，在跨域请求中，client端必须手动设置xhr.withCredentials=true，且server端也必须允许request能携带认证信息（即response header中包含Access-Control-Allow-Credentials:true），这样浏览器才会自动将cookie加在request header中。<br>另外，要特别注意一点，一旦跨域request能够携带认证信息，server端一定不能将Access-Control-Allow-Origin设置为*，而必须设置为请求页面的域名。</p>
+<h5 id="xhr事件"><a href="#xhr事件" class="headerlink" title="xhr事件"></a><strong>xhr事件</strong></h5><ol>
+<li><p>XMLHttpRequestEventTarget接口定义了7个事件：</p>
+<ul>
+<li><p>onloadstart</p>
+</li>
+<li><p>onprogress</p>
+</li>
+<li><p>onabort</p>
+</li>
+<li><p>ontimeout</p>
+</li>
+<li><p>onerror</p>
+</li>
+<li><p>onload</p>
+</li>
+<li><p>onloadend</p>
+</li>
+</ul>
+</li>
+<li><p>每一个XMLHttpRequest里面都有一个upload属性，而upload是一个XMLHttpRequestUpload对象</p>
+</li>
+<li><p>XMLHttpRequest和XMLHttpRequestUpload都继承了同一个XMLHttpRequestEventTarget接口，所以xhr和xhr.upload都有第一条列举的7个事件</p>
+</li>
+<li><p>onreadystatechange是XMLHttpRequest独有的事件</p>
+</li>
+<li><p>xhr一共有8个相关事件：7个XMLHttpRequestEventTarget事件+1个独有的onreadystatechange事件；而xhr.upload只有7个XMLHttpRequestEventTarget事件。</p>
+</li>
+</ol>
+<p>| 事件|    触发条件|<br>| ——–   | —–:  | :—-:  |<br>|onreadystatechange    |每当xhr.readyState改变时触发；但xhr.readyState由非0值变为0时不触发。|<br>|onloadstart    |调用xhr.send()方法后立即触发，若xhr.send()未被调用则不会触发此事件。|<br>|onprogress|    xhr.upload.onprogress在上传阶段(即xhr.send()之后，xhr.readystate=2之前)触发，每50ms触发一次；xhr.onprogress在下载阶段（即xhr.readystate=3时）触发，每50ms触发一次。|<br>|onload    |当请求成功完成时触发，此时xhr.readystate=4|<br>|onloadend|    当请求结束（包括请求成功和请求失败）时触发|<br>|onabort    |当调用xhr.abort()后触发|<br>|ontimeout|    xhr.timeout不等于0，由请求开始即onloadstart开始算起，当到达xhr.timeout所设置时间请求还未结束即onloadend，则触发此事件。|<br>|onerror|    在请求过程中，若发生Network error则会触发此事件（若发生Network error时，上传还没有结束，则会先触发xhr.upload.onerror，再触发xhr.onerror；若发生Network error时，上传已经结束，则只会触发xhr.onerror）。注意，只有发生了网络层级别的异常才会触发此事件，对于应用层级别的异常，如响应返回的xhr.statusCode是4xx时，并不属于Network error，所以不会触发onerror事件，而是会触发onload事件。|</p>
+<h5 id="事件触发顺序"><a href="#事件触发顺序" class="headerlink" title="事件触发顺序"></a><strong>事件触发顺序</strong></h5><p>当请求一切正常时，相关的事件触发顺序如下：</p>
+<ol>
+<li>触发xhr.onreadystatechange(之后每次readyState变化时，都会触发一次)</li>
+<li>触发xhr.onloadstart<br>//上传阶段开始：</li>
+<li>触发xhr.upload.onloadstart</li>
+<li>触发xhr.upload.onprogress</li>
+<li>触发xhr.upload.onload</li>
+<li>触发xhr.upload.onloadend<br>//上传结束，下载阶段开始：</li>
+<li>触发xhr.onprogress</li>
+<li>触发xhr.onload</li>
+<li>触发xhr.onloadend</li>
+</ol>
+<p>发生abort/timeout/error异常的处理<br>在请求的过程中，有可能发生 abort/timeout/error这3种异常。那么一旦发生这些异常，xhr后续会进行哪些处理呢？后续处理如下：</p>
+<ol>
+<li>一旦发生abort或timeout或error异常，先立即中止当前请求</li>
+<li>将 readystate 置为4，并触发 xhr.onreadystatechange事件</li>
+<li>如果上传阶段还没有结束，则依次触发以下事件：</li>
+</ol>
+<ul>
+<li>xhr.upload.onprogress</li>
+<li>xhr.upload.[onabort或ontimeout或onerror]</li>
+<li>xhr.upload.onloadend</li>
+</ul>
+<ol start="4">
+<li>触发 xhr.onprogress事件</li>
+<li>触发 xhr.[onabort或ontimeout或onerror]事件</li>
+<li>触发xhr.onloadend 事件</li>
+</ol>
+<h6 id="建议使用onload注册成功回调"><a href="#建议使用onload注册成功回调" class="headerlink" title="建议使用onload注册成功回调"></a><strong>建议使用onload注册成功回调</strong></h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,/<span class="string">'hello.json'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'readState: '</span>,xhr.readyState)</span><br><span class="line">&#125;</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">    <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.loh(<span class="string">'error'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>手写ajax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest()</span><br><span class="line">xhr.open(&#39;GET&#39;,&#39;https:&#x2F;&#x2F;easy-mock.com&#x2F;mock&#x2F;5ad5ede4773784316889f3b8&#x2F;north&#x2F;getType&#39;,true)</span><br><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    if(xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200)&#123;</span><br><span class="line">        console.log(xhr.responseText)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        console.log(&quot;error&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
+
+<p>封装一个ajax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">function ajax(opts)&#123;</span><br><span class="line">    var url &#x3D; opts.url</span><br><span class="line">    var type &#x3D; opts.type || &#39;GET&#39;</span><br><span class="line">    var dataType &#x3D; opts.dataType || &#39;json&#39;</span><br><span class="line">    var onsuccess &#x3D; opts.onsuccess || function()&#123;&#125;</span><br><span class="line">    var onerror &#x3D; opts.onerror || function()&#123;&#125;</span><br><span class="line">    var data &#x3D; opts.data || &#123;&#125;</span><br><span class="line"></span><br><span class="line">    var dataStr &#x3D; []</span><br><span class="line">    for(var key in data)&#123;</span><br><span class="line">        dataStr.push(key + &#39;&#x3D;&#39; + data[key])</span><br><span class="line">    &#125;</span><br><span class="line">    dataStr &#x3D; dataStr.join(&#39;&amp;&#39;)</span><br><span class="line"></span><br><span class="line">    if(type &#x3D;&#x3D;&#x3D; &#39;GET&#39;)&#123;</span><br><span class="line">        url +&#x3D; &#39;?&#39; + dataStr</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var xhr &#x3D; new XMLHttpRequest()</span><br><span class="line">    xhr.open(type, url, true)</span><br><span class="line">    xhr.onload &#x3D; function()&#123;</span><br><span class="line">        if((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) || xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">            &#x2F;&#x2F;成功了</span><br><span class="line">            if(dataType &#x3D;&#x3D;&#x3D; &#39;json&#39;)&#123;</span><br><span class="line">                onsuccess( JSON.parse(xhr.responseText))</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                onsuccess( xhr.responseText)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            onerror()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">      xhr.onerror &#x3D; onerror</span><br><span class="line">    if(type &#x3D;&#x3D;&#x3D; &#39;POST&#39;)&#123;</span><br><span class="line">        xhr.send(dataStr)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        xhr.send()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ajax(&#123;</span><br><span class="line">    url: &#39;http:&#x2F;&#x2F;api.jirengu.com&#x2F;weather.php&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        city: &#39;北京&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    onsuccess: function(ret)&#123;</span><br><span class="line">        console.log(ret)</span><br><span class="line">    &#125;,</span><br><span class="line">    onerror: function()&#123;</span><br><span class="line">        console.log(&#39;服务器异常&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>promise版本的ajax</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getJSON = <span class="function"><span class="keyword">function</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.readyState === <span class="number">4</span> &amp;&amp; <span class="keyword">this</span>.status === <span class="number">200</span>)&#123;</span><br><span class="line">          resolve(<span class="keyword">this</span>.response)</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="keyword">this</span>.statusText))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> client = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    client.open(<span class="string">"GET"</span>, url);</span><br><span class="line">    client.onreadystatechange = handler;</span><br><span class="line">    client.responseType = <span class="string">"json"</span>;</span><br><span class="line">    client.setRequestHeader(<span class="string">"Accept"</span>, <span class="string">"application/json"</span>);</span><br><span class="line">    client.send();</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> promise;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">getJSON(<span class="string">"/posts.json"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Contents: '</span> + json);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'出错了'</span>, error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/12/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" rel="next" title="Vue双向数据绑定">
+                <i class="fa fa-chevron-left"></i> Vue双向数据绑定
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/JavaScript%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E7%9A%84%E6%89%A7%E8%A1%8C/" rel="prev" title="事件循环机制">
+                事件循环机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/09/14/ajax/';
+            this.page.identifier = '2018/09/14/ajax/';
+            this.page.title = 'ajax';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/09/14/ajax/';
+                this.page.identifier = '2018/09/14/ajax/';
+                this.page.title = 'ajax';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/09/14/ajax/';
+            this.page.identifier = '2018/09/14/ajax/';
+            this.page.title = 'ajax';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#XMLHttpRequest-level-2新增功能"><span class="nav-number">1.</span> <span class="nav-text">XMLHttpRequest level 2新增功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指定xhr-response的数据类型"><span class="nav-number">2.</span> <span class="nav-text">指定xhr.response的数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取response数据"><span class="nav-number">3.</span> <span class="nav-text">获取response数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ajax的状态"><span class="nav-number">4.</span> <span class="nav-text">ajax的状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置请求的超时时间"><span class="nav-number">5.</span> <span class="nav-text">设置请求的超时时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ajax发去同步请求"><span class="nav-number">6.</span> <span class="nav-text">ajax发去同步请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ajax获取上传、下载进度"><span class="nav-number">7.</span> <span class="nav-text">ajax获取上传、下载进度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ajax可以发送什么类型的数据"><span class="nav-number">8.</span> <span class="nav-text">ajax可以发送什么类型的数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xhr-withCredentials"><span class="nav-number">9.</span> <span class="nav-text">xhr.withCredentials</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xhr事件"><span class="nav-number">10.</span> <span class="nav-text">xhr事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件触发顺序"><span class="nav-number">11.</span> <span class="nav-text">事件触发顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#建议使用onload注册成功回调"><span class="nav-number">11.1.</span> <span class="nav-text">建议使用onload注册成功回调</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

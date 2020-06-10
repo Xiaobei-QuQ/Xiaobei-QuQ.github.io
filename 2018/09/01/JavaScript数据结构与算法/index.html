@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="算法与数据结构是编程的“术”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据结构与算法">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/09/01/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="算法与数据结构是编程的“术”">
+<meta property="article:published_time" content="2018-08-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-05T04:29:28.000Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/09/01/JavaScript数据结构与算法/"/>
+
+
+
+
+
+  <title>JavaScript数据结构与算法 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">09月</div>
+			<div class="post-day">01</div>
+	</div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/09/01/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript数据结构与算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-01T00:00:00+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>算法与数据结构是编程的“术”</p>
+<a id="more"></a>
+
+<p>第一章了解基础知识</p>
+<p>类型转换</p>
+<ul>
+<li><p>undefined，null，false，+0，-0，NaN，空字符串转换为false</p>
+</li>
+<li><p>true，其他数字，非空字符串，对象转换成true</p>
+</li>
+</ul>
+<p>ES6实现对象的可读与存储</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var _name &#x3D; Symbol();</span><br><span class="line">class Person2 &#123;</span><br><span class="line"></span><br><span class="line">    constructor (name) &#123;</span><br><span class="line">        this[_name] &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    get name() &#123;</span><br><span class="line">        return this[_name];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    set name(value) &#123;</span><br><span class="line">        this[_name] &#x3D; value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let lotrChar2 &#x3D; new Person2(&#39;Frodo&#39;);</span><br><span class="line">console.log(lotrChar2.name);</span><br><span class="line">lotrChar2.name &#x3D; &#39;Gandalf&#39;;</span><br><span class="line">console.log(lotrChar2.name);</span><br><span class="line"></span><br><span class="line">console.log(Object.getOwnPropertySymbols(lotrChar2));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>slice和splice</p>
+<p>slice是指定在一个数组中的元素创建一个新的数组，即原数组不会变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var color &#x3D; new Array(&#39;red&#39;,&#39;blue&#39;,&#39;yellow&#39;,&#39;black&#39;);</span><br><span class="line">var color2 &#x3D; color.slice(1,2);</span><br><span class="line">alert(color); 　　&#x2F;&#x2F;输出   red,blue,yellow,black</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(color2);   &#x2F;&#x2F;输出   blue;注意：这里只有第二项一个值</span><br></pre></td></tr></table></figure>
+
+<p>splice是JS中数组功能最强大的方法，它能够实现对数组元素的删除、插入、替换操作，<strong>返回值为被操作的值</strong>。</p>
+<p>　　splice删除：　　<strong>color.splice(1,2)</strong> （删除color中的1、2两项）；</p>
+<p>　　splice插入：　　<strong>color.splice(1,0,’brown’,’pink’)</strong> （在color键值为1的元素前插入两个值）；</p>
+<p>　　splice替换：　　<strong>color.splice(1,2,’brown’,’pink’)</strong>  （在color中替换1、2元素）；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var color &#x3D; new Array(&#39;red&#39;,&#39;blue&#39;,&#39;yellow&#39;,&#39;black&#39;);</span><br><span class="line">var color2 &#x3D; color.splice(2,3,&#39;brown&#39;,&#39;pink&#39;);</span><br><span class="line">alert(color);     &#x2F;&#x2F;  red,blue,brown,pink</span><br><span class="line">alert(color2);    &#x2F;&#x2F;  yellow,black</span><br></pre></td></tr></table></figure>
+
+
+<p>数组的every和some</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isEven = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// returns true if x is a multiple of 2.</span></span><br><span class="line">    <span class="built_in">console</span>.log(x);</span><br><span class="line">    <span class="keyword">return</span> (x % <span class="number">2</span> == <span class="number">0</span>) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>];</span><br><span class="line"></span><br><span class="line">numbers.every(isEven); <span class="comment">//is going to execute the function only once false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'---'</span>);</span><br><span class="line"></span><br><span class="line">numbers.some(isEven); <span class="comment">//is going to execute the function twice true</span></span><br></pre></td></tr></table></figure>
+
+<p>数组迭代</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let iterator &#x3D; numver[Symbol.iterator]()</span><br><span class="line">iterator.next().value  &#x2F;&#x2F;1</span><br><span class="line"></span><br><span class="line">let aEntries &#x3D; number.entries()</span><br><span class="line">aEntries.next().value  &#x2F;&#x2F;[0.1] -位置为0键值为1</span><br><span class="line"></span><br><span class="line">let aKeys &#x3D; numbers.keys()</span><br><span class="line">aKeys.next()  &#x2F;&#x2F;&#123;value:0,done:false&#125;</span><br><span class="line"></span><br><span class="line">let aValue &#x3D; numbers.value()</span><br><span class="line">aValue.next()  &#x2F;&#x2F;&#123;value:1,done:false&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Array.from</p>
+<p>Array.of</p>
+<p>Array.fill</p>
+<p>weakmap</p>
+<p><strong>WeakMap</strong> 对象是一组键/值对的集合，其中的键是弱引用的。其键必须是对象，而值可以是任意的。</p>
+<p>利用weakmap实现栈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">let Stack3 &#x3D; (function () &#123;</span><br><span class="line"></span><br><span class="line">    const items &#x3D; new WeakMap();</span><br><span class="line"></span><br><span class="line">    class Stack3 &#123;</span><br><span class="line"></span><br><span class="line">        constructor () &#123;</span><br><span class="line">            items.set(this, []);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        push(element)&#123;</span><br><span class="line">            let s &#x3D; items.get(this);</span><br><span class="line">            s.push(element);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        pop()&#123;</span><br><span class="line">            let s &#x3D; items.get(this);</span><br><span class="line">            let r &#x3D; s.pop();</span><br><span class="line">            return r;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        peek()&#123;</span><br><span class="line">            let s &#x3D; items.get(this);</span><br><span class="line">            return s[s.length-1];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        isEmpty()&#123;</span><br><span class="line">            return items.get(this).length &#x3D;&#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size()&#123;</span><br><span class="line">            let s &#x3D; items.get(this);</span><br><span class="line">            return s.length;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        clear()&#123;</span><br><span class="line">            items.set(this, []);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        print()&#123;</span><br><span class="line">            console.log(this.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        toString()&#123;</span><br><span class="line">            return items.get(this).toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return Stack3;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>利用栈实现进制转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function baseConverter(decNumber, base)&#123;</span><br><span class="line"></span><br><span class="line">    var remStack &#x3D; new Stack(),</span><br><span class="line">        rem,</span><br><span class="line">        baseString &#x3D; &#39;&#39;,</span><br><span class="line">        digits &#x3D; &#39;0123456789ABCDEF&#39;;</span><br><span class="line"></span><br><span class="line">    while (decNumber &gt; 0)&#123;</span><br><span class="line">        rem &#x3D; Math.floor(decNumber % base);</span><br><span class="line">        remStack.push(rem);</span><br><span class="line">        decNumber &#x3D; Math.floor(decNumber &#x2F; base);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (!remStack.isEmpty())&#123;</span><br><span class="line">        baseString +&#x3D; digits[remStack.pop()];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return baseString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>汉诺塔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function towerOfHanoi(n, from, to, helper)&#123;</span><br><span class="line"></span><br><span class="line">    if (n &gt; 0)&#123;</span><br><span class="line">        towerOfHanoi(n-1, from, helper, to);</span><br><span class="line">        to.push(from.pop());</span><br><span class="line">        console.log(n+&#39;-----&#39;);</span><br><span class="line">        console.log(&#39;Source: &#39; + from.toString()); &#x2F;&#x2F;(3,2)(3)()()(2)()()</span><br><span class="line">        console.log(&#39;Dest: &#39; + to.toString());  &#x2F;&#x2F; (1)(2)(2,1)(3)(1)(3,2)(3,2,1)</span><br><span class="line">        console.log(&#39;Helper: &#39; + helper.toString());  &#x2F;&#x2F;()(1)(3)(2,1)(3)(1)()</span><br><span class="line">        towerOfHanoi(n-1, helper, to, from);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var source &#x3D; new Stack();</span><br><span class="line">source.push(3);</span><br><span class="line">source.push(2);</span><br><span class="line">source.push(1);</span><br><span class="line"></span><br><span class="line">var dest &#x3D; new Stack();</span><br><span class="line">var helper &#x3D; new Stack();</span><br><span class="line"></span><br><span class="line">towerOfHanoi(source.size(), source, dest, helper);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>利用weakmap实现链表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line">let LinkedList2 &#x3D; (function () &#123;</span><br><span class="line"></span><br><span class="line">    class Node &#123;</span><br><span class="line">        constructor(element)&#123;</span><br><span class="line">            this.element &#x3D; element;</span><br><span class="line">            this.next &#x3D; null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const length &#x3D; new WeakMap();</span><br><span class="line">    const head &#x3D; new WeakMap();</span><br><span class="line"></span><br><span class="line">    class LinkedList2 &#123;</span><br><span class="line"></span><br><span class="line">        constructor () &#123;</span><br><span class="line">            length.set(this, 0);</span><br><span class="line">            head.set(this, null);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        append(element) &#123;</span><br><span class="line"></span><br><span class="line">            let node &#x3D; new Node(element),</span><br><span class="line">                current;</span><br><span class="line"></span><br><span class="line">            if (this.getHead() &#x3D;&#x3D;&#x3D; null) &#123; &#x2F;&#x2F;first node on list</span><br><span class="line">                head.set(this, node);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line"></span><br><span class="line">                current &#x3D; this.getHead();</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;loop the list until find last item</span><br><span class="line">                while (current.next) &#123;</span><br><span class="line">                    current &#x3D; current.next;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;get last item and assign next to added item to make the link</span><br><span class="line">                current.next &#x3D; node;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;update size of list</span><br><span class="line">            let l &#x3D; this.size();</span><br><span class="line">            l++;</span><br><span class="line">            length.set(this, l);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        insert(position, element) &#123;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;check for out-of-bounds values</span><br><span class="line">            if (position &gt;&#x3D; 0 &amp;&amp; position &lt;&#x3D; this.size()) &#123;</span><br><span class="line"></span><br><span class="line">                let node &#x3D; new Node(element),</span><br><span class="line">                    current &#x3D; this.getHead(),</span><br><span class="line">                    previous,</span><br><span class="line">                    index &#x3D; 0;</span><br><span class="line"></span><br><span class="line">                if (position &#x3D;&#x3D;&#x3D; 0) &#123; &#x2F;&#x2F;add on first position</span><br><span class="line"></span><br><span class="line">                    node.next &#x3D; current;</span><br><span class="line">                    head.set(this, node);</span><br><span class="line"></span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    while (index++ &lt; position) &#123;</span><br><span class="line">                        previous &#x3D; current;</span><br><span class="line">                        current &#x3D; current.next;</span><br><span class="line">                    &#125;</span><br><span class="line">                    node.next &#x3D; current;</span><br><span class="line">                    previous.next &#x3D; node;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;update size of list</span><br><span class="line">                let l &#x3D; this.size();</span><br><span class="line">                l++;</span><br><span class="line">                length.set(this, l);</span><br><span class="line"></span><br><span class="line">                return true;</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        removeAt(position) &#123;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;check for out-of-bounds values</span><br><span class="line">            if (position &gt; -1 &amp;&amp; position &lt; this.size()) &#123;</span><br><span class="line"></span><br><span class="line">                let current &#x3D; this.getHead(),</span><br><span class="line">                    previous,</span><br><span class="line">                    index &#x3D; 0;</span><br><span class="line"></span><br><span class="line">                &#x2F;&#x2F;removing first item</span><br><span class="line">                if (position &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    head.set(this, current.next);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line"></span><br><span class="line">                    while (index++ &lt; position) &#123;</span><br><span class="line"></span><br><span class="line">                        previous &#x3D; current;</span><br><span class="line">                        current &#x3D; current.next;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F;link previous with current&#39;s next - skip it to remove</span><br><span class="line">                    previous.next &#x3D; current.next;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                let l &#x3D; this.size();</span><br><span class="line">                l--;</span><br><span class="line">                length.set(this, l);</span><br><span class="line"></span><br><span class="line">                return current.element;</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        remove(element) &#123;</span><br><span class="line"></span><br><span class="line">            let index &#x3D; this.indexOf(element);</span><br><span class="line">            return this.removeAt(index);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        indexOf(element) &#123;</span><br><span class="line"></span><br><span class="line">            let current &#x3D; this.getHead(),</span><br><span class="line">                index &#x3D; 0;</span><br><span class="line"></span><br><span class="line">            while (current) &#123;</span><br><span class="line">                if (element &#x3D;&#x3D;&#x3D; current.element) &#123;</span><br><span class="line">                    return index;</span><br><span class="line">                &#125;</span><br><span class="line">                index++;</span><br><span class="line">                current &#x3D; current.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        isEmpty() &#123;</span><br><span class="line">            return this.size() &#x3D;&#x3D;&#x3D; 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        size() &#123;</span><br><span class="line">            return length.get(this);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        getHead() &#123;</span><br><span class="line">            return head.get(this);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        toString() &#123;</span><br><span class="line"></span><br><span class="line">            let current &#x3D; this.getHead(),</span><br><span class="line">                string &#x3D; &#39;&#39;;</span><br><span class="line"></span><br><span class="line">            while (current) &#123;</span><br><span class="line">                string +&#x3D; current.element + (current.next ? &#39;, &#39; : &#39;&#39;);</span><br><span class="line">                current &#x3D; current.next;</span><br><span class="line">            &#125;</span><br><span class="line">            return string;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        print() &#123;</span><br><span class="line">            console.log(this.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return LinkedList2;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/31/%E7%8C%AB/" rel="next" title="她和她的猫">
+                <i class="fa fa-chevron-left"></i> 她和她的猫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/03/%E7%A7%8B%E6%8B%9B%E4%B9%8B%E5%89%8D/" rel="prev" title="秋招之前">
+                秋招之前 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/09/01/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/';
+            this.page.identifier = '2018/09/01/JavaScript数据结构与算法/';
+            this.page.title = 'JavaScript数据结构与算法';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/09/01/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/';
+                this.page.identifier = '2018/09/01/JavaScript数据结构与算法/';
+                this.page.title = 'JavaScript数据结构与算法';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/09/01/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/';
+            this.page.identifier = '2018/09/01/JavaScript数据结构与算法/';
+            this.page.title = 'JavaScript数据结构与算法';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

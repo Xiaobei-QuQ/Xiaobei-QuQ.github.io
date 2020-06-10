@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习CSS的一些笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS深入浅出-3">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/02/25/CSS%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-3/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="学习CSS的一些笔记">
+<meta property="article:published_time" content="2018-02-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-05T04:29:28.000Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/02/25/CSS深入浅出-3/"/>
+
+
+
+
+
+  <title>CSS深入浅出-3 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">02月</div>
+			<div class="post-day">25</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/CSS/" itemprop="url" rel="index">
+          <span itemprop="name">CSS</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/02/25/CSS%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS深入浅出-3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-25T00:00:00+08:00">
+                2018-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习CSS的一些笔记</p>
+<a id="more"></a>
+
+<h1 id="单列布局"><a href="#单列布局" class="headerlink" title="单列布局"></a>单列布局</h1><ol>
+<li>max-width: 1000px: 低于1000px时页面不会出现滚动条，且会随着width缩小，自己缩小</li>
+<li>width: 1000px; 低于1000px时页面会出现滚动条</li>
+<li>min-width: 1000px， 低于1000px，屏幕会出现滚动条，固定1000px，超过10000px占满整个屏幕.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  .layout&#123;</span><br><span class="line">    width: 960px;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">  &#125;</span><br><span class="line">  body&#123;</span><br><span class="line">    min-width: 960px;</span><br><span class="line">  &#125;  &#x2F;*  为防止出现滚动条bug  *&#x2F; </span><br><span class="line">  #header&#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background: red;</span><br><span class="line">  &#125;</span><br><span class="line">  #content&#123;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background: blue;</span><br><span class="line">  &#125;</span><br><span class="line">  #footer&#123;</span><br><span class="line">    height: 50px;</span><br><span class="line">    background: yellow;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;header&quot;&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;layout&quot;&gt;头部&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;content&quot; class&#x3D;&quot;layout&quot;&gt;内容&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;footer&quot;&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;layout&quot;&gt;尾部&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<a href="http://js.jirengu.com/lajuyerula/1/edit" target="_blank" rel="noopener">http://js.jirengu.com/lajuyerula/1/edit</a><h1 id="双列布局"><a href="#双列布局" class="headerlink" title="双列布局"></a>双列布局</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .cleafrix:after&#123;</span><br><span class="line">      content: &#39;&#39;;</span><br><span class="line">      display: block;</span><br><span class="line">      clear: both;</span><br><span class="line">    &#125;</span><br><span class="line">    .aside&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 500px;</span><br><span class="line">      background: yellow;</span><br><span class="line">      float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .main&#123;</span><br><span class="line">      margin-left: 210px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #footer&#123;</span><br><span class="line">      background: #ccc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &lt;&#x2F;style&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;content class&#x3D;&quot;clearfix&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;aside&quot;&gt;aside&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;main&quot;&gt;content&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;footer&quot;&gt;footer&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<a href="http://js.jirengu.com/loxe" target="_blank" rel="noopener">http://js.jirengu.com/loxe</a><h1 id="三列布局"><a href="#三列布局" class="headerlink" title="三列布局"></a>三列布局</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after&#123;</span><br><span class="line">      content: &#39;&#39;;</span><br><span class="line">      display: block;</span><br><span class="line">      clear: both;</span><br><span class="line">    &#125;</span><br><span class="line">    .menu&#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 500px;</span><br><span class="line">      background: pink;</span><br><span class="line">      float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .aside&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 500px;</span><br><span class="line">      background: yellow;</span><br><span class="line">      float: right;</span><br><span class="line">    &#125;</span><br><span class="line">    .main&#123;</span><br><span class="line">      margin-left: 110px; &#x2F;*为什么要加margin-left*&#x2F;</span><br><span class="line">      margin-right: 210px;</span><br><span class="line">      height: 400px;</span><br><span class="line">      background: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #footer&#123;</span><br><span class="line">      background: #ccc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &lt;div id&#x3D;&quot;content&quot;&gt;</span><br><span class="line">    &lt;!-- 为什么不是main在前面 --&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;menu&quot;&gt;aside&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;aside&quot;&gt;aside&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;main&quot;&gt;content&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;footer&quot;&gt;footer&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<a href="http://js.jirengu.com/jige" target="_blank" rel="noopener">http://js.jirengu.com/jige</a><h1 id="八张图片float排列"><a href="#八张图片float排列" class="headerlink" title="八张图片float排列"></a>八张图片float排列</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">ul,li&#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">  list-style: none;</span><br><span class="line">&#125;</span><br><span class="line">.ct&#123;</span><br><span class="line">    overflow:hidden;</span><br><span class="line">    width: 640px;</span><br><span class="line">    border:dashed 1px orange;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.ct .item&#123;</span><br><span class="line">    float:left;</span><br><span class="line">    margin-left: 20px;</span><br><span class="line">    margin-top: 20px;</span><br><span class="line">    width:200px;</span><br><span class="line">    height:200px;</span><br><span class="line">    background: red;</span><br><span class="line">&#125;</span><br><span class="line">.ct&gt;ul&#123;</span><br><span class="line">  margin-left: -20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;div class&#x3D;&quot;ct&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;4&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;5&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;6&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;7&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li class&#x3D;&quot;item&quot;&gt;8&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<a href="http://js.jirengu.com/xute" target="_blank" rel="noopener">http://js.jirengu.com/xute</a></li>
+</ol>
+<h1 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;圣杯布局&lt;&#x2F;title&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    #content:after&#123;</span><br><span class="line">      content: &#39;&#39;;        &#x2F;*8*&#x2F;</span><br><span class="line">      display: block;     &#x2F;*8*&#x2F;</span><br><span class="line">      clear: both;        &#x2F;*8*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    #content&#123;</span><br><span class="line">      padding-left: 100px;  &#x2F;*5*&#x2F;</span><br><span class="line">      padding-right: 150px; &#x2F;*5*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .aside, .main, .extra&#123;</span><br><span class="line">      float: left;         &#x2F;*2*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .aside&#123;</span><br><span class="line">      width: 100px;        &#x2F;*1*&#x2F;</span><br><span class="line">      height: 300px;       &#x2F;*1*&#x2F;</span><br><span class="line">      background: red;     &#x2F;*1*&#x2F;</span><br><span class="line">      </span><br><span class="line">      margin-left: -100%;  &#x2F;*4*&#x2F;</span><br><span class="line">      position: relative;  &#x2F;*6*&#x2F;</span><br><span class="line">      left: -100px;        &#x2F;*6*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    .extra&#123;</span><br><span class="line">      width: 150px;        &#x2F;*1*&#x2F;</span><br><span class="line">      height: 300px;       &#x2F;*1*&#x2F;</span><br><span class="line">      background: yellow;  &#x2F;*1*&#x2F;</span><br><span class="line">      </span><br><span class="line">      margin-left: -150px; &#x2F;*5*&#x2F;</span><br><span class="line">      position: relative;  &#x2F;*7*&#x2F;</span><br><span class="line">      left: 150px;         &#x2F;*7*&#x2F;</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    .main&#123;</span><br><span class="line">      height: 350px;       &#x2F;*1*&#x2F;</span><br><span class="line">      background: blue;    &#x2F;*1*&#x2F;</span><br><span class="line">      </span><br><span class="line">      width: 100%;         &#x2F;*3*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  &lt;&#x2F;style&gt;</span><br><span class="line">  </span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;main&quot;&gt;main&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;aside&quot;&gt;aside&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;extra&quot;&gt;extra&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>圣杯布局：</p>
+<ol>
+<li>设置main的width为100%，aside和extra的width为定宽</li>
+<li>三个块全部左浮动</li>
+<li>左边asidemargin为-100%（相对父元素）；右边extramargin为-width（自己的width）=&gt; 让aside和extra跑到main左右</li>
+<li>给包裹三个块的content设置padding-left: -width(aside);margin-right: -width(extra); =&gt; 让main左右压缩</li>
+<li>aside相对自己left: -width; extra相对自己left: width;   =&gt; 让aside和extra跑出来</li>
+<li>清除浮动clearfix</li>
+</ol>
+<p>优点:</p>
+<ol>
+<li>是三列布局，两边固定宽度，中间自适应</li>
+<li>中间内容元素在 dom 元素次序中优先位置</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>mian的最小宽度不能小于aside的宽度(因为设置父元素的padding时，aside和extra会被挤到下面去)</li>
+</ol>
+<h1 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局:"></a>双飞翼布局:</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;圣杯布局&lt;&#x2F;title&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    </span><br><span class="line">    #content:after&#123;</span><br><span class="line">      content: &#39;&#39;;        &#x2F;*8*&#x2F;</span><br><span class="line">      display: block;     &#x2F;*8*&#x2F;</span><br><span class="line">      clear: both;        &#x2F;*8*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    #content&#123;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">    .aside, .main, .extra&#123;</span><br><span class="line">      float: left;         &#x2F;*2*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .aside&#123;</span><br><span class="line">      width: 100px;        &#x2F;*1*&#x2F;</span><br><span class="line">      height: 300px;       &#x2F;*1*&#x2F;</span><br><span class="line">      background: red;     &#x2F;*1*&#x2F;</span><br><span class="line">      </span><br><span class="line">      margin-left: -100%;  &#x2F;*4*&#x2F;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    .extra&#123;</span><br><span class="line">      width: 150px;        &#x2F;*1*&#x2F;</span><br><span class="line">      height: 300px;       &#x2F;*1*&#x2F;</span><br><span class="line">      background: yellow;  &#x2F;*1*&#x2F;</span><br><span class="line">      </span><br><span class="line">      margin-left: -150px; &#x2F;*5*&#x2F;</span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">    .main&#123;</span><br><span class="line">       background: blue;    &#x2F;*第1步添加，第7步注释掉*&#x2F;</span><br><span class="line">       height: 350px;       &#x2F;*第1步添加，第7步注释掉*&#x2F;</span><br><span class="line">      </span><br><span class="line">      width: 100%;         &#x2F;*3*&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    .wrap&#123;</span><br><span class="line">      margin-left: 100px;  &#x2F;*6*&#x2F;</span><br><span class="line">      margin-right: 150px; &#x2F;*6*&#x2F;</span><br><span class="line">      background: blue;    &#x2F;*7*&#x2F;</span><br><span class="line">      height: 350px;       &#x2F;*7*&#x2F;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">  &lt;&#x2F;style&gt;</span><br><span class="line">  </span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;main&quot;&gt;</span><br><span class="line">      &lt;div class&#x3D;&quot;wrap&quot;&gt;main&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;aside&quot;&gt;aside&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;extra&quot;&gt;extra&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>双飞翼布局：</p>
+<ol>
+<li>设置main的width为100%，aside和extra的width为定宽</li>
+<li>aside和extra和wrap三个块全部左浮动</li>
+<li>左边asidemargin为-100%（相对父元素main）；右边extramargin为-width（自己的width）=&gt; 让aside和extra跑到父元素main左边和右边；</li>
+<li>给中间块的wrap设置margin-left:aside的width； margin-right: extra的width；</li>
+<li>清除浮动clearfix</li>
+</ol>
+<p>和圣杯布局的区别：<br>前三部基本相同，只是双飞翼中间块还加上了子元素wrap，设定wrap的margin来实现main的居中，而圣杯利用父元素的paddinhg。</p>
+<h1 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h1><p><a href="http://js.jirengu.com/don/2/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/don/2/edit?html,output</a></p>
+<h1 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h1><h1 id="grid布局"><a href="#grid布局" class="headerlink" title="grid布局"></a>grid布局</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/20/css%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-2/" rel="next" title="CSS深入浅出-2">
+                <i class="fa fa-chevron-left"></i> CSS深入浅出-2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/02/if(xx)%E4%B8%8Ex==y/" rel="prev" title="if(xx)与x==y">
+                if(xx)与x==y <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/02/25/CSS%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-3/';
+            this.page.identifier = '2018/02/25/CSS深入浅出-3/';
+            this.page.title = 'CSS深入浅出-3';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/02/25/CSS%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-3/';
+                this.page.identifier = '2018/02/25/CSS深入浅出-3/';
+                this.page.title = 'CSS深入浅出-3';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/02/25/CSS%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA-3/';
+            this.page.identifier = '2018/02/25/CSS深入浅出-3/';
+            this.page.title = 'CSS深入浅出-3';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单列布局"><span class="nav-number">1.</span> <span class="nav-text">单列布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双列布局"><span class="nav-number">2.</span> <span class="nav-text">双列布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三列布局"><span class="nav-number">3.</span> <span class="nav-text">三列布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八张图片float排列"><span class="nav-number">4.</span> <span class="nav-text">八张图片float排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圣杯布局"><span class="nav-number">5.</span> <span class="nav-text">圣杯布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双飞翼布局"><span class="nav-number">6.</span> <span class="nav-text">双飞翼布局:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流式布局"><span class="nav-number">7.</span> <span class="nav-text">流式布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flex布局"><span class="nav-number">8.</span> <span class="nav-text">flex布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#grid布局"><span class="nav-number">9.</span> <span class="nav-text">grid布局</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

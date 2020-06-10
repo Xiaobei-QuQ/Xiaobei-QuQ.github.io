@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ES6重新定义了函数，对比一下各种函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="了解函数">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/05/01/%E4%BA%86%E8%A7%A3%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="ES6重新定义了函数，对比一下各种函数。">
+<meta property="og:image" content="http://while4.com/2017/05/19/AST/1459949808babel.png">
+<meta property="article:published_time" content="2018-04-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-05T04:29:28.000Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://while4.com/2017/05/19/AST/1459949808babel.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/05/01/了解函数/"/>
+
+
+
+
+
+  <title>了解函数 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">05月</div>
+			<div class="post-day">01</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/JavaScript/" itemprop="url" rel="index">
+          <span itemprop="name">JavaScript</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/05/01/%E4%BA%86%E8%A7%A3%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">了解函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T00:00:00+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ES6重新定义了函数，对比一下各种函数。</p>
+<a id="more"></a>
+<h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><ol>
+<li><p>匿名函数</p>
+</li>
+<li><p>具名函数</p>
+</li>
+<li><p>箭头函数</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var fn &#x3D; function()&#123;</span><br><span class="line"></span><br><span class="line">    return 1</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var fn2 &#x3D; fn</span><br><span class="line"></span><br><span class="line">fn.name &#x2F;&#x2F;fn</span><br><span class="line"></span><br><span class="line">fn2.name &#x2F;&#x2F;fn</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function fn3()&#123;</span><br><span class="line"></span><br><span class="line">return 3</span><br><span class="line"></span><br><span class="line">&#125; &#x2F;&#x2F;全局作用域</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var fn5 &#x3D; function fn4()&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;函数作用域</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var fn6 &#x3D; (i,j) &#x3D;&gt; &#123;console.log(1);return i+j&#125; &#x2F;&#x2F;只有this有区别</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><p>静态作用域又叫做词法作用域，采用词法作用域的变量叫词法变量。词法变量有一个在编译时静态确定的作用域。词法变量的作用域可以是一个函数或一段代码，该变量在这段代码区域内可见（visibility）；在这段区域以外该变量不可见（或无法访问）。词法作用域里，取变量的值时，会检查函数定义时的文本环境，捕捉函数定义时对该变量的绑定。</p>
+<p>抽象语法树(Abstract Syntax Tree)</p>
+<p>很多插件工具的原理都是通过JavaScript Parser把代码转化为一颗抽象语法树（AST），这颗树定义了代码的结构，通过操纵这颗树，我们可以精准的定位到声明语句、赋值语句、运算语句等等，实现对代码的分析、优化、变更等操作。</p>
+<p><img src="http://while4.com/2017/05/19/AST/1459949808babel.png" alt=""></p>
+<p>JavaScript Parser把js源码转化为抽象语法树的解析器。</p>
+<p>浏览器会把js源码通过解析器转为抽象语法树，再进一步转化为字节码或直接生成机器码。</p>
+<p>一般来说每个js引擎都会有自己的抽象语法树格式，Chrome的v8引擎，firefox的SpiderMonkey引擎等等，MDN提供了详细SpiderMonkey AST format的详细说明，算是业界的标准。</p>
+<p>发展到现在可能不同的JavaScript Parser的AST格式会不同，或基于SpiderMonkey AST format，或重新设计自己的AST format，或基于SpiderMonkey AST format优化改进。通过优化抽象语法树，来使程序运行的更快，也是一种提高效率的方法。</p>
+<p>常用的JavaScript Parser有：</p>
+<ul>
+<li><p>Esprima</p>
+</li>
+<li><p>UglifyJS2</p>
+</li>
+<li><p>Traceur</p>
+</li>
+<li><p>Acorn</p>
+</li>
+<li><p>Shift</p>
+</li>
+</ul>
+<p>AST三板斧：</p>
+<p>通过 esprima 把源码转化为AST</p>
+<p>通过 estraverse 遍历并更新AST</p>
+<p>通过 escodegen 将AST重新生成源码</p>
+<p>JavaScript的执行过程</p>
+<p>1.读入第一个代码段（js执行引擎并非一行一行地执行程序，而是一段一段地分析执行的）</p>
+<p>2.做词法分析和语法分析，有错则报语法错误（比如括号不匹配等），并跳转到步骤5</p>
+<p>3.对【var】变量和【function】定义做“预解析“（永远不会报错的，因为只解析正确的声明）</p>
+<p>4.执行代码段，有错则报错（比如变量未定义）</p>
+<p>5.如果还有下一个代码段，则读入下一个代码段，重复步骤2</p>
+<p>6.结束</p>
+<p>下面分析一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">var global1 &#x3D; 1</span><br><span class="line"></span><br><span class="line">function fn1(param1)&#123;</span><br><span class="line"></span><br><span class="line">    var local1 &#x3D; &#39;local1&#39;</span><br><span class="line"></span><br><span class="line">    var local2 &#x3D; &#39;local2&#39;&#125;</span><br><span class="line"></span><br><span class="line">    function fn2(param2)&#123;</span><br><span class="line"></span><br><span class="line">        var local2 &#x3D; &#39;inner local2&#39;</span><br><span class="line"></span><br><span class="line">        console.log(local1) &#x2F;&#x2F;内部没有local1,找到外部的local1</span><br><span class="line"></span><br><span class="line">        console.log(local2) &#x2F;&#x2F;内部就有内部local2</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function fn3()&#123;</span><br><span class="line"></span><br><span class="line">        var local2 &#x3D; &#39;fn3 local2&#39;</span><br><span class="line"></span><br><span class="line">        fn2(local2) &#x2F;&#x2F;形参不会影响fn2的local2,在一开始就函数预解析的时候就决定了能访问哪些变量</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var a &#x3D; 1</span><br><span class="line"></span><br><span class="line">function b()&#123;</span><br><span class="line"></span><br><span class="line">console.log(a)  &#x2F;词法作用域只能确认a为外部a的值,但是不能确认值</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a&#x3D; 2</span><br><span class="line"></span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="call-stack"><a href="#call-stack" class="headerlink" title="call stack"></a>call stack</h4><p> 了解调用堆栈,函数是怎么离开和返回的.记住当前的环境,碰到函数时候,要切换环境,就把当前的记录放在调用栈里,回来的时候先回最后进入的地方,一层层地退出,像盗梦空间里的梦境一样。</p>
+<h4 id="this-amp-arguments"><a href="#this-amp-arguments" class="headerlink" title="this &amp; arguments"></a>this &amp; arguments</h4><p>进入一个函数的时候，除了记录地址放到call stake里，还要记录传递给函数的参数有哪些。</p>
+<p>尽量减少f()调用，因为f()是阉割版。用f.call调用，可以查看this</p>
+<ul>
+<li>this是隐藏的第一个参数，且必须是对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function f()&#123;</span><br><span class="line"></span><br><span class="line">    console.log(this)</span><br><span class="line"></span><br><span class="line">    console.log(arguments)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f.call() &#x2F;&#x2F; window</span><br><span class="line"></span><br><span class="line">f.call(&#123;name:&#39;frank&#39;&#125;) &#x2F;&#x2F; &#123;name: &#39;frank&#39;&#125;, [] </span><br><span class="line"></span><br><span class="line">f.call(&#123;name:&#39;frank&#39;&#125;,1) &#x2F;&#x2F; &#123;name: &#39;frank&#39;&#125;, [1]</span><br><span class="line"></span><br><span class="line">f.call(&#123;name:&#39;frank&#39;&#125;,1,2) &#x2F;&#x2F; &#123;name: &#39;frank&#39;&#125;, [1,2]</span><br></pre></td></tr></table></figure>
+
+<p> 为什么this是对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">f.call(10,1)</span><br><span class="line"></span><br><span class="line">this变成Number对象</span><br></pre></td></tr></table></figure>
+
+<p> 因为this是函数与对象的羁绊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var person &#x3D; &#123;</span><br><span class="line"></span><br><span class="line">        name: &#39;frank&#39;,</span><br><span class="line"></span><br><span class="line">        sayHi: function(person)&#123;</span><br><span class="line"></span><br><span class="line">            console.log(&#39;Hi, I am&#39; + person.name)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        sayBye: function(person)&#123;</span><br><span class="line"></span><br><span class="line">            console.log(&#39;Bye, I am&#39; + person.name)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        say: function(person, word)&#123;</span><br><span class="line"></span><br><span class="line">            console.log(word + &#39;, I am&#39; + person.name)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    person.sayHi(person)</span><br><span class="line"></span><br><span class="line">    person.sayBye(person)</span><br><span class="line"></span><br><span class="line">    person.say(person, &#39;How are you&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 能不能变成 </span><br><span class="line"></span><br><span class="line">    person.sayHi()</span><br><span class="line"></span><br><span class="line">    person.sayBye()</span><br><span class="line"></span><br><span class="line">    person.say(&#39;How are you&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 那么源代码就要改了</span><br><span class="line"></span><br><span class="line">    var person &#x3D; &#123;</span><br><span class="line"></span><br><span class="line">        name: &#39;frank&#39;,</span><br><span class="line"></span><br><span class="line">        sayHi: function()&#123;</span><br><span class="line"></span><br><span class="line">            console.log(&#39;Hi, I am&#39; + this.name)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        sayBye: function()&#123;</span><br><span class="line"></span><br><span class="line">            console.log(&#39;Bye, I am&#39; + this.name)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        say: function(word)&#123;</span><br><span class="line"></span><br><span class="line">            console.log(word + &#39;, I am&#39; + this.name)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果你不想吃语法糖</span><br><span class="line"></span><br><span class="line">    person.sayHi.call(person)</span><br><span class="line"></span><br><span class="line">    person.sayBye.call(person)</span><br><span class="line"></span><br><span class="line">    person.say.call(person, &#39;How are you&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 还是回到那句话：this 是 call 的第一个参数</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; this 是参数，所以，只有在调用的时候才能确定</span><br><span class="line"></span><br><span class="line">    person.sayHi.call(&#123;name:&#39;haha&#39;&#125;)  &#x2F;&#x2F; 这时 sayHi 里面的 this 就不是 person 了</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; this 真的很不靠谱</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 新手疑惑的两种写法</span><br><span class="line"></span><br><span class="line">    var fn &#x3D; person.sayHi</span><br><span class="line"></span><br><span class="line">    person.sayHi() &#x2F;&#x2F; this &#x3D;&#x3D;&#x3D; person</span><br><span class="line"></span><br><span class="line">    fn()  &#x2F;&#x2F; this &#x3D;&#x3D;&#x3D; window</span><br></pre></td></tr></table></figure>
+
+<p> this是函数.前面的对象</p>
+<p> 函数只有输入和输出，没有意识</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var fn &#x3D; persion.sayHi()</span><br><span class="line"></span><br><span class="line">fn() &#x2F;&#x2F;输出&#39;Hi，I am&#39;</span><br></pre></td></tr></table></figure>
+
+<p> 函数不知道fn()是哪个对象，function与persion和sayHi都无关，只与call有关，看call传什么参数过来。</p>
+<p> persion.sayHi()等价于 persion.sayHi.call(persion)  // this是persion</p>
+<p> fn() 等价于fn.call() //没有点，所以this是undefined，即window</p>
+<h4 id="call-apply"><a href="#call-apply" class="headerlink" title="call/apply"></a>call/apply</h4><p>可以传入数组等多个不确定参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function sum()&#123;</span><br><span class="line"></span><br><span class="line">    var n &#x3D; 0;</span><br><span class="line"></span><br><span class="line">    for(var i&#x3D;0;i&lt; arguments.length; i++)&#123;</span><br><span class="line"></span><br><span class="line">    n +&#x3D; arguments[i]</span><br><span class="line"></span><br><span class="line">    return n</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">var a &#x3D; [1,2,3,4,5,6]</span><br><span class="line"></span><br><span class="line">sum.apply(undefined,a)</span><br></pre></td></tr></table></figure>
+
+<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h4><p>返回一个新哈数，这个新函数会call与原来的函数，call的参数由你指定 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var view &#x3D; &#123;</span><br><span class="line"></span><br><span class="line">    element: $(&#39;####div1&#39;),</span><br><span class="line"></span><br><span class="line">    bindEvent: function()&#123;</span><br><span class="line"></span><br><span class="line">        this.element.onclick &#x3D; this.onClick.bind(this)</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    onCLick: function()&#123;</span><br><span class="line"></span><br><span class="line">        this.element.addClass(&#39;active&#39;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bindEvents: function()&#123;</span><br><span class="line"></span><br><span class="line">    var _this &#x3D; this</span><br><span class="line"></span><br><span class="line">    this.element.onClick &#x3D; function()&#123;</span><br><span class="line"></span><br><span class="line">        _this.onClick.call(_this)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;只有这样才保证this是view，如果只是this，这个函数是在用户点击的时候被浏览器用call调用的，传递的第一个参数是对应的元素，该元素按钮不能调用onClick函数,用这种方法来使用wiew，但是很容易混乱。</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>bind就是返回一个函数，在onClick后加个call，call的第一个参数就是给bind的参数。不需要再用函数和_this包起来。在浏览器调用函数时可以控制call的第一个参数值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bindEvent: function()&#123;</span><br><span class="line"></span><br><span class="line">    this.onClick.bind &#x3D; function(x,y,z)&#123;</span><br><span class="line"></span><br><span class="line">        var oldFn &#x3D; this &#x2F;&#x2F;也就是外面的this.onClick</span><br><span class="line"></span><br><span class="line">        return function()&#123;</span><br><span class="line"></span><br><span class="line">            oldFn.call(x,y,z)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    相等于</span><br><span class="line"></span><br><span class="line">    this.element.onclick &#x3D; this.onClick.bind(this)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="柯里化-高阶函数"><a href="#柯里化-高阶函数" class="headerlink" title="柯里化/高阶函数"></a>柯里化/高阶函数</h4><p>柯里化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">z &#x3D; f(x,y) &#x3D; x + 2y</span><br><span class="line"></span><br><span class="line">g &#x3D; f(x&#x3D;1)(y) &#x3D; 1 + 2y</span><br></pre></td></tr></table></figure>
+
+<p>把一个函数其中的一个参数固定下来就叫柯里化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function sum(x,y)&#123;</span><br><span class="line"></span><br><span class="line">    return x+y</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function addOne(y)&#123;</span><br><span class="line"></span><br><span class="line">    return sum(1,y)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function addTwo(y)&#123;</span><br><span class="line"></span><br><span class="line">    return sum(2,y)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var Handlerbar &#x3D; function (template,data)&#123;</span><br><span class="line"></span><br><span class="line">    return template.replace.(&#39;&#123;&#123;name&#125;&#125;&#39;,data.name)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var template &#x3D; &#39;&lt;h1&gt;Hi, I am &#123;&#123;name&#125;&#125;&lt;&#x2F;h1&gt;&#39;</span><br><span class="line"></span><br><span class="line">Handlerbar&#123;template, &#123;name: &#39;frank&#39;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">柯里化之后</span><br><span class="line"></span><br><span class="line">var Handlerbar2 &#x3D; function (template,data)&#123;</span><br><span class="line"></span><br><span class="line">    return function(data)&#123;</span><br><span class="line"></span><br><span class="line">        return template.replace.(&#39;&#123;&#123;name&#125;&#125;&#39;,data.name)</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var t &#x3D; Handlerbar2(&#39;&lt;h1&gt;Hi, I am &#123;&#123;name&#125;&#125;&lt;&#x2F;h1&gt;&#39;)</span><br><span class="line"></span><br><span class="line">    t(&#123;name: &#39;frank&#39;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>高阶函数</p>
+<ul>
+<li>接受一个函数</li>
+</ul>
+<blockquote>
+<p>array.sort(function(a,b){a-b})  array.sort.call(array,fn)</p>
+</blockquote>
+<blockquote>
+<p>array.forEach(function(a){})    array.forEach.call(array,fn)</p>
+</blockquote>
+<blockquote>
+<p>array.map(function(){})         array.map.call(array,fn)</p>
+</blockquote>
+<blockquote>
+<p>array.filter(function(){})      array.filter.call(array,fn)</p>
+</blockquote>
+<blockquote>
+<p>array.reduce(function(){})      array.reduce.call(array,fn)</p>
+</blockquote>
+<ul>
+<li>输出一个函数</li>
+</ul>
+<p>fn.bind.call(fn,{},{1,2,3])</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">array &#x3D; [1,2,3,4,5,6,7,8]</span><br><span class="line"></span><br><span class="line">var sum &#x3D; 0</span><br><span class="line"></span><br><span class="line">for( var i &#x3D;0;i&lt;array.length;i++)&#123;</span><br><span class="line"></span><br><span class="line">    if(array[i] % 2 &#x3D;&#x3D; 0)&#123;</span><br><span class="line"></span><br><span class="line">        sum +&#x3D; array[i]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(sum)</span><br><span class="line"></span><br><span class="line">array.filter(function(n)&#123;n%2&#x3D;&#x3D;&#x3D;0&#125;)  &#x2F;&#x2F;[2,3,4,8]</span><br><span class="line"></span><br><span class="line">array.reduce(function(prev.next)&#123;return porev+next&#125;,0)</span><br><span class="line"></span><br><span class="line">相等于</span><br><span class="line"></span><br><span class="line">array.reduce(filter(array,function(n)&#123;n%2&#x3D;&#x3D;&#x3D;0&#125;),function(prev.next)&#123;return porev+next&#125;,0)</span><br><span class="line"></span><br><span class="line">还比如</span><br><span class="line"></span><br><span class="line">sort(filter(array,function(n)&#123;n%2&#x3D;&#x3D;&#x3D;1&#125;),function(a,b)&#123;return a-b&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>高阶函数接受一个函数，输出另一个函数，可以实现各种组件的转换</p>
+<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>名词形式： 被当做参数的函数</p>
+<p>动词形式： 调用这个回调</p>
+<p>注意异步与回调没有直接关系</p>
+<p>serTimeout(fn,1000)被称为异步回调</p>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>返回对象的构造函数</p>
+<p>new Number(1)</p>
+<p>new String(2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function Empty()&#123;</span><br><span class="line"></span><br><span class="line">    this.name &#x3D; &#39;Kong&#39;</span><br><span class="line"></span><br><span class="line">    return this</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var empty &#x3D; new Empty  &#x2F;&#x2F;写了一个new多出上面的几行代码,</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;var empty &#x3D; Empty.call(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function fn(x,y)&#123;</span><br><span class="line"></span><br><span class="line">    return x+y</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var fn &#x3D; (x,y) &#x3D;&gt; &#123;return x+y&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimerout(function()&#123;</span><br><span class="line"></span><br><span class="line">    consolo.log(this)</span><br><span class="line"></span><br><span class="line">&#125;.bind&#123;name: &#39;frank&#39;&#125;),1000)   &#x2F;&#x2F;call的第一个参数就是&#123;name: &#39;frank&#39;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimerout(function()&#123;</span><br><span class="line"></span><br><span class="line">    consolo.log(this)</span><br><span class="line"></span><br><span class="line">    setTimerout(function()&#123;</span><br><span class="line"></span><br><span class="line">        consolo.log(this)</span><br><span class="line"></span><br><span class="line">        &#125;.bind&#123;this),1000)  &#x2F;&#x2F;this还是外面的this，没进入函数</span><br><span class="line"></span><br><span class="line">&#125;.bind&#123;name: &#39;frank&#39;&#125;),1000)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">setTimerout(function(a)&#123;</span><br><span class="line"></span><br><span class="line">    consolo.log(this)</span><br><span class="line"></span><br><span class="line">    setTimerout((a)&#x3D;&gt; console.log(this),1000)  &#x2F;&#x2F;箭头函数不绑定this，只绑定argument</span><br><span class="line"></span><br><span class="line">    &#125;.bind&#123;name: &#39;frank&#39;&#125;),1000)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var fn &#x3D; () &#x3D;&gt; console.log(this)</span><br><span class="line"></span><br><span class="line">fn.call(&#123;name:&#39;frank&#39;&#125;) &#x2F;&#x2F;不能指定this</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line"></span><br><span class="line">    var a</span><br><span class="line"></span><br><span class="line">    this</span><br><span class="line"></span><br><span class="line">    function fn2()&#123;</span><br><span class="line"></span><br><span class="line">        console.log(a)</span><br><span class="line"></span><br><span class="line">        this  &#x2F;&#x2F;this不是词法作用域</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var fn3 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line"></span><br><span class="line">    console.log(a)</span><br><span class="line"></span><br><span class="line">    console.log(this)  &#x2F;&#x2F;局部作用域</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/29/this/" rel="next" title="this的千丝万缕">
+                <i class="fa fa-chevron-left"></i> this的千丝万缕
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/04/%E4%BA%8B%E4%BB%B6/" rel="prev" title="事件">
+                事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/05/01/%E4%BA%86%E8%A7%A3%E5%87%BD%E6%95%B0/';
+            this.page.identifier = '2018/05/01/了解函数/';
+            this.page.title = '了解函数';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/05/01/%E4%BA%86%E8%A7%A3%E5%87%BD%E6%95%B0/';
+                this.page.identifier = '2018/05/01/了解函数/';
+                this.page.title = '了解函数';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/05/01/%E4%BA%86%E8%A7%A3%E5%87%BD%E6%95%B0/';
+            this.page.identifier = '2018/05/01/了解函数/';
+            this.page.title = '了解函数';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#词法作用域"><span class="nav-number">2.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call-stack"><span class="nav-number">3.</span> <span class="nav-text">call stack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-amp-arguments"><span class="nav-number">4.</span> <span class="nav-text">this &amp; arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call-apply"><span class="nav-number">5.</span> <span class="nav-text">call&#x2F;apply</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bind"><span class="nav-number">6.</span> <span class="nav-text">bind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#柯里化-高阶函数"><span class="nav-number">7.</span> <span class="nav-text">柯里化&#x2F;高阶函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回调函数"><span class="nav-number">8.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">9.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">10.</span> <span class="nav-text">箭头函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

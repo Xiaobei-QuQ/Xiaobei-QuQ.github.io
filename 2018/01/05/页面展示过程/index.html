@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="输入url到页面展示经历了什么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从url到页面">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/01/05/%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="输入url到页面展示经历了什么">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10521305-fbae49c4eb0b2341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10521305-283b5064eae653fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/10521305-fd36d0ffe3bd377d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2018-01-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-04-05T04:29:28.000Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/10521305-fbae49c4eb0b2341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/01/05/页面展示过程/"/>
+
+
+
+
+
+  <title>从url到页面 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">01月</div>
+			<div class="post-day">05</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%96%E7%95%8C/" itemprop="url" rel="index">
+          <span itemprop="name">网络世界</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/01/05/%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从url到页面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T00:00:00+08:00">
+                2018-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%96%E7%95%8C/" itemprop="url" rel="index">
+                    <span itemprop="name">网络世界</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>输入url到页面展示经历了什么</p>
+<a id="more"></a>
+
+<p>##1.DNS解析 </p>
+<p> DNS解析过程充当了一个翻译的角色，实现了网址到IP地址的转换。 是一个递归查询的过程。<br>所有网址真正的解析过程为:  . =&gt; .com =&gt; <a href="http://google.com/" target="_blank" rel="noopener">google.com</a>. =&gt; <a href="http://www.google.com/" target="_blank" rel="noopener">www.google.com</a>.。<br><img src="http://upload-images.jianshu.io/upload_images/10521305-fbae49c4eb0b2341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Image.png"></p>
+<ul>
+<li>DNS缓存<br>DNS解析过程通常有很多请求，为了实现优化，使用了DNS缓存。<br>DNS存在着多级缓存，从离浏览器的距离排序的话，有以下几种: 浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存。<ul>
+<li>在你的chrome浏览器中输入:chrome://net-internals/#dns，你可以看到chrome浏览器的DNS缓存。</li>
+<li>window命令行输入ipconfig /displaydns 可以查询缓存<br>系统缓存主要存在/etc/hosts(Linux系统)中。</li>
+</ul>
+</li>
+</ul>
+<p>DNS负载均衡，又叫做DNS重定向。CDN利用DNS的重定向技术，DNS服务器返回一个和用户最接近的点的IP地址给用户，CDN节点的服务器负责响应用户的请求，提供所需内容。</p>
+<p>##2. TCP连接<br>| Linux TCP/IP四层概念模型  |   对应网络协议 |<br>| :—:| :—-: |<br>|  应用层  |       HTTP、DNS、FTP、SMTP等   |<br>|  运输层  |       TCP、UDP   |<br>|  网络层  |       IP协议（网际协议）、ICMP（Internet控制消息协议）、 <br>ARP（地址解析协议）、 RARP、AKP、UUCP   |<br>|  数据链路层 |   Ethernet、FDDI和能传输IP数据包的任何协议。   |</p>
+<p>TCP和UDP是两种运输层的协议</p>
+<ul>
+<li>TCP是一种面向连接的协议，提供可靠的数据传输，一般服务质量要求比较高的情况，使用这个协议。在正式收发数据前，必须和对方建立可靠的连接。<br>一个TCP连接必须要经过三次“对话”才能建立起来。</li>
+</ul>
+<blockquote>
+<p>三次对话的简单过程：<br>1.主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次&gt;对话；<br>2.主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；<br>3.主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。</p>
+</blockquote>
+<p>三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。</p>
+<ul>
+<li>UDP是一种用户数据报协议，是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。它不与对方建立连接，而是直接就把数据包发送过去！<br>UDP适用于一次只传送少量数据、对可靠性要求不高的应用环境。<blockquote>
+<p>比如，我们经常使用“ping”命令来测试两台主机之间TCP/IP通信是否正常，其实“ping”命令的原理就是向对方主机发送UDP数据包，然后对方主机确认收到数据包，如果数据包是否到达的消息及时反馈回来，那么网络就是通的。<br>例如，在默认状态下，一次“ping”操作发送4个数据包（如图2所示）。大家可以看到，发送的数据包数量是4包，收到的也是4包（因为对方主机收到后会发回一个确认收到的数据包）。这充分说明了UDP协议是面向非连接的协议，没有建立连接的过程。<br>正因为UDP协议没有连接的过程，所以它的通信效果高；但也正因为如此，它的可靠性不如TCP协议高。QQ就使用UDP发消息，因此有时会出现收不到消息的情况。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>TCP与UDP的区别：</li>
+</ul>
+<p>1.实现信息的可靠传递方面不同。</p>
+<blockquote>
+<p>TCP协议中包含了专门的传递保证机制，当数据接收方收到发送方传来的信息时，会自动向发送方发出确认消息；发送方只有在接收到该确认消息之后才继续传送其它信息，否则将一直等待直到收到确认信息为止。 与TCP不同，UDP协议并不提供数据传送的保证机制。如果在从发送方到接收方的传递过程中出现数据报的丢失，协议本身并不能做出任何检测或提示。因此，通常人们把UDP协议称为不可靠的传输协议。相对于TCP协议，UDP协议的另外一个不同之处在于如何接收突发性的多个数据报。不同于TCP，UDP并不能确保数据的发送和接收顺序。事实上，UDP协议的这种乱序性基本上很少出现，通常只会在网络非常拥挤的情况下才有可能发生。</p>
+</blockquote>
+<p>   2.速度：</p>
+<blockquote>
+<p>UDP具有TCP所望尘莫及的速度优势。虽然TCP协议中植入了各种安全保障功能，但是在实际执行的过程中会占用大量的系统开销，无疑使速度受到严重的影响。反观UDP由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。</p>
+</blockquote>
+<p>   3.长度：</p>
+<blockquote>
+<p>UDP报文的最大长度为512字节，而TCP则允许报文长度超过512字节。当DNS查询超过512字节时，协议的TC标志出现删除标志，这时则使用TCP发送。通常传统的UDP报文一般不会大于512字节。</p>
+</blockquote>
+<p>TCP支持的应用协议主要有：Telnet、FTP、SMTP等；<br>UDP支持的应用层协议主要有：NFS（网络文件系统）、SNMP（简单网络管理协议）、DNS（主域名称系统）、TFTP（通用文件传输协议）等。</p>
+<blockquote>
+<p>* 重点：             <em>HTTP是用TCP协议传输的。</em></p>
+</blockquote>
+<ul>
+<li><p>DNS解析会同时占用UDP和TCP端口</p>
+<p>如果用wireshark、sniffer或古老些的tcpdump抓包分析，会发现几乎所有的情况都是在使用UDP，使用TCP的情况非常罕见，神秘兮兮。其实当解析器发出一个request后，返回的response中的tc删节标志比特位被置1时，说明反馈报文因为超长而有删节。这是因为UDP的报文最大长度为512字节。解析器发现后，将使用TCP重发request，TCP允许报文长度超过512字节。既然TCP能将data stream分成多个segment，它就能用更多的segment来传送任意长度的数据。</p>
+<p>  另外一种情况是，当一个域的辅助域名服务器启动时，将从该域的主域名服务器primary DNS server执行区域传送。除此之外，辅域名服务器也会定时（一般时3小时）向PDS进行查询以便了解SOA的数据是否有变动。如有变动，也会执行一次区域传送。区域传送将使用TCP而不是UDP，因为传送的数据量比一个request或response多得多。</p>
+<p>  DNS主要还是使用UDP，解析器还是服务端都必须自己处理重传和超时。DNS往往需要跨越广域网或互联网，分组丢失率和往返时间的不确定性要更大些，这对于DNS客户端来说是个考验，好的重传和超时检测就显得更重要了。</p>
+<p> 域名解析时使用UDP协议：<br>客户端向DNS服务器查询域名，一般返回的内容都不超过512字节，用UDP传输即可。不用经过TCP三次握手，这样DNS服务器负载更低，响应更快。虽然从理论上说，客户端也可以指定向DNS服务器查询的时候使用TCP，但事实上，很多DNS服务器进行配置的时候，仅支持UDP查询包。</p>
+<ul>
+<li>选择：如果比较UDP包和TCP包的结构，很明显UDP包不具备TCP包复杂的可靠性与控制机制。与TCP协议相同，UDP的源端口数和目的端口数也都支持一台主机上的多个应用。一个16位的UDP包包含了一个字节长的头部和数据的长度，校验码域使其可以进行整体校验。（许多应用只支持UDP，如：多媒体数据流，不产生任何额外的数据，即使知道有破坏的包也不进行重发。）<br>很明显，当数据传输的性能必须让位于数据传输的完整性、可控制性和可靠性时，TCP协议是当然的选择。当强调传输性能而不是传输的完整性时，如：音频和多媒体应用，UDP是最好的选择。在数据传输时间很短，以至于此前的连接过程成为整个流量主体的情况下，UDP也是一个好的选择，如：DNS交换。把SNMP建立在UDP上的部分原因是设计者认为当发生网络阻塞时，UDP较低的开销使其有更好的机会去传送管理数据。TCP丰富的功能有时会导致不可预料的性能低下，但是我们相信在不远的将来，TCP可靠的点对点连接将会用于绝大多数的网络应用。</li>
+</ul>
+</li>
+</ul>
+<p>##3. 发送HTTP请求<br>在这之前先了解客户端和服务器如何利用HTTPS构建联系</p>
+<p>HTTP协议是使用TCP作为其传输层协议的。<br>HTTPS协议： HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。<br>HTTPS过程： 客户端与服务器进行一个握手(TLS/SSL握手)</p>
+<blockquote>
+<p>爱丽丝：客户端，鲍勃：服务器。<br>第一步，爱丽丝给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法。<br>第二步，鲍勃确认双方使用的加密方法，并给出数字证书、以及一个服务器生成的随机数（Server random）。<br>第三步，爱丽丝确认数字证书有效，然后生成一个新的随机数（Premaster secret），并使用数字证书中的公钥，加密这个随机数，发给鲍勃。<br>第四步，鲍勃使用自己的私钥，获取爱丽丝发来的随机数（即Premaster secret）。<br>第五步，爱丽丝和鲍勃根据约定的加密方法，使用前面的三个随机数，生成”对话密钥”（session key），用来加密接下来的整个对话过程。</p>
+</blockquote>
+<p>注意:<br>（1）生成对话密钥一共需要三个随机数。<br>     （2）握手之后的对话使用”对话密钥”加密（对称加密），服务器的公钥和私钥只用于加密和解密”对话密钥”（非对称加密），无其他作用。<br>（3）服务器公钥放在服务器的数字证书之中。<br>（4）采用DH算法后，Premaster secret不需要传递，双方只要交换各自的参数，就可以算出这    个随机数。<br>（5） session ID的思想很简单，就是每一次对话都有一个编号（session ID）。如果对话中断，下次重连的时候，只要客户端给出这个编号，且服务器有这个编号的记录，双方就可以重新使用已有的”对话密钥”，而不必重新生成一把。但是只能是保留在一台服务器上。<br>还有另一种方法是发送一个服务器在上一次对话中发送过来的session ticket。这个session ticket是加密的，只有服务器才能解密，其中包括本次对话的主要信息，比如对话密钥和加密方法。当服务器收到session ticket以后，解密后就不必重新生成对话密钥了。</p>
+<p>######发送HTTP请求： </p>
+<blockquote>
+<p>前端工程师眼中的HTTP，它主要发生在客户端。发送HTTP请求的过程就是构建HTTP请求报文并通过TCP协议中发送到服务器指定端口(HTTP协议80/8080, HTTPS协议443)。HTTP请求报文是由三部分组成: 请求行, 请求报头和请求正文。</p>
+</blockquote>
+<p>3.1. 请求行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式:Method Request-URL HTTP-Version CRLF</span><br><span class="line">eg: GET index.html HTTP&#x2F;1.1</span><br></pre></td></tr></table></figure>
+<p>常用的方法(method)有: GET, POST, PUT, DELETE, OPTIONS, HEAD。</p>
+<pre><code>GET - 从指定的资源请求数据。
+POST - 向指定的资源提交要被处理的数据</code></pre><p>GET的语义是请求获取指定的资源。GET方法是安全(指可见的意思)、幂等、可缓存的（除非有 Cache-Control Header的约束）,GET方法的报文主体没有任何语义。</p>
+<p>POST的语义是根据请求负荷（报文主体）对指定的资源做出处理，具体的处理方式视资源类型而不同。POST不安全，不幂等，（大部分实现）不可缓存。为了针对其不可缓存性，有一系列的方法来进行优化。<br><img src="http://upload-images.jianshu.io/upload_images/10521305-283b5064eae653fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="_3WME49YY$P@9A(}6%~YC8D.png"></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">改变服务器状态</th>
+<th align="center">不改变服务器状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">幂等</td>
+<td align="center">put</td>
+<td align="center">get</td>
+</tr>
+<tr>
+<td align="center">不幂等</td>
+<td align="center">post</td>
+<td align="center">无</td>
+</tr>
+<tr>
+<td align="center">get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">在做数据查询时，建议用Get方式；</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">而在做数据添加、修改或删除时，建议用Post方式。</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>3.2. 请求报头</p>
+<p>请求报头允许客户端向服务器传递请求的附加信息和客户端自身的信息。<br>常见的请求报头有:<br> Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。<br>Accept用于指定客户端用于接受哪些类型的信息，<br>Accept-Encoding与Accept类似，它用于指定接受的编码方式。Connection设置为Keep-alive用于告诉客户端本次HTTP请求结束之后并不需要关闭TCP连接，这样可以使下次HTTP请求使用相同的TCP通道，节省TCP连接建立的时间。</p>
+<p>3.3. 请求正文</p>
+<p>当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中。在请求包头中有一些与请求正文相关的信息，例如: 现在的Web应用通常采用Rest架构，请求的数据格式一般为json。这时就需要设置Content-Type: application/json。</p>
+<p>##4. 服务器处理请求并返回HTTP报文<br>对应的就是后端工程师眼中的HTTP。后端从在固定的端口接收到TCP报文开始，这一部分对应于编程语言中的socket。它会对TCP连接进行处理，对HTTP协议进行解析，并按照报文格式进一步封装成HTTP Request对象，供上层使用。这一部分工作一般是由Web服务器去进行。</p>
+<p> HTTP响应报文也是由三部分组成: 状态码, 响应报头和响应报文。</p>
+<p>######4.1. 状态码</p>
+<p>状态码是由3位数组成，第一个数字定义了响应的类别，且有五种可能取值:</p>
+<ul>
+<li>1xx：指示信息–表示请求已接收，继续处理。</li>
+<li>2xx：成功–表示请求已被成功接收、理解、接受。</li>
+<li>3xx：重定向–要完成请求必须进行更进一步的操作。</li>
+<li>4xx：客户端错误–请求有语法错误或请求无法实现。</li>
+<li>5xx：服务器端错误–服务器未能实现合法的请求。200 OK 服务器成功处理了请求（这个是我们见到最多的）</li>
+</ul>
+<p>200 ok </p>
+<p>206 客户发送了一个带有range头的请求，服务器完成了它。</p>
+<p>301/302 Moved Permanently（重定向）请求的URL已移走。Response中应该包含一个Location URL, 说明资源现在所处的位置，301和302 非常相似， 一个是永久转移，一个是临时转移。</p>
+<p>304 Not Modified（未修改）客户的缓存资源是最新的， 要客户端使用缓存</p>
+<p>403 资源不可用，无权限。</p>
+<p>404 Not Found 未找到资源</p>
+<p>500 后台服务器遇到错误</p>
+<p>501 Internal Server Error服务器遇到一个错误，使其无法对请求提供服务</p>
+<p>502  Bad Gateway  服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。</p>
+<p>504  Gateway Timeout  由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。（HTTP 1.1新）</p>
+<p>######4.2. 响应报头(Response Headers)</p>
+<p>常见的响应报头字段有:<br>Server  服务器应用软件名称和版本<br>Location    告诉客户端实在在哪里，用于定向<br> 如<a href="http://yinyue.baidu.com/的location是http://music.baidu.com/" target="_blank" rel="noopener">http://yinyue.baidu.com/的location是http://music.baidu.com/</a><br>Content-Encoding    主体编码格式<br>Cache-Control:private指示响应是针对单个用户的，不能由共享缓存存储。<br>Cache-Control:public指示响应是针对单个用户的，不能由共享缓存存储。私有缓存可以存储响应。<br>Connection:Keep-Alive 不访问服务器但保持连线<br>Content-Type:text/html;charset=utf-8 主体的MIME<br>Content-Location    资源实际位置（一般不公布）<br>ETag    主体的实体标记<br>Expires    过期时间<br>If-None-Match    如果ETag和当前文档ETag不符合，获取资源<br>If-Modified-Since    除非在某个指定日期之后修改过，否则限制这个请求<br>If-Unmodified-Since    在某个指定日期之后没有修改过，否则现在请求<br>######4.3. 响应报文</p>
+<p>服务器返回给浏览器的文本信息，通常HTML, CSS, JS, 图片等文件就放在这一部分。</p>
+<p>######4.4. http缓存</p>
+<p>浏览器缓存，以及缓存代理服务器具有缓存功能。</p>
+<p>好处：减少了冗余的数据传输，节省了网费。减少了服务器的负担， 大大提高了网站的性能。加快了客户端加载网页的速度</p>
+<p>Web服务器通过2种方式来判断浏览器缓存是否是最新的。</p>
+<p>第一种， 浏览器把缓存文件的最后修改时间通过 header ”If-Modified-Since“来告诉Web服务器。</p>
+<p>浏览器客户端想请求一个文档， 首先检查本地缓存，发现存在这个文档的缓存， 获取缓存中文档的最后修改时间，通过： If-Modified-Since， <a href="http://www.bkjia.com/jingyan/httprequest.html" target="_blank" rel="noopener">发送Request给Web服务器。</a>Web服务器收到Request，将服务器的文档修改时间（Last-Modified）: 跟request header 中的，If-Modified-Since相比较， 如果时间是一样的， 说明缓存还是最新的， Web服务器将发送304 Not Modified给浏览器客户端， 告诉客户端直接使用缓存里的版本。</p>
+<p>第二种， 浏览器把缓存文件的ETag, 通过header “If-None-Match”, 来告诉Web服务器。</p>
+<p>ETag是Web服务端产生的，然后发给浏览器客户端。浏览器客户端是不用关心Etag是如何产生的。</p>
+<p>为什么使用ETag呢？ 主要是为了解决Last-Modified 无法解决的一些问题。</p>
+<p>（1）. 某些服务器不能精确得到文件的最后修改时间， 这样就无法通过最后修改时间来判断文件是否更新了。</p>
+<p>（2）. 某些文件的修改非常频繁，在秒以下的时间内进行修改. Last-Modified只能精确到秒。</p>
+<p>（3）. 一些文件的最后修改时间改变了，但是内容并未改变。 我们不希望客户端认为这个文件修改了。</p>
+<p>缓存的关键主要包括request method和目标URI（一般只有GET请求才会被缓存）。 普遍的缓存案例:</p>
+<ul>
+<li>一个检索请求的成功响应: 对于 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET" target="_blank" rel="noopener" title="HTTP GET 方法请求指定的资源。使用 GET 的请求应该只用于获取数据。"><code>GET</code></a>请求，响应状态码为：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/200" target="_blank" rel="noopener" title="状态码 200 OK 表明请求已经成功. 默认情况下状态码为200的响应可以被缓存。"><code>200</code></a>，则表示为成功。一个包含例如HTML文档，图片，或者文件的响应.</li>
+<li>不变的重定向: 响应状态码：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/301" target="_blank" rel="noopener" title="HTTP 301 永久重定向 说明请求的资源已经被移动到了由 Location 头部指定的url上，是固定的不会再改变。搜索引擎会根据该响应修正。"><code>301</code></a>.</li>
+<li>错误响应: 响应状态码：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/404" target="_blank" rel="noopener" title="状态码 404 Not Found 代表客户端错误，指的是服务器端无法找到所请求的资源。返回该响应的链接通常称为坏链（broken link）或死链（dead link），它们会导向链接出错处理(link rot)页面。"><code>404</code></a> 的一个页面.</li>
+<li>不完全的响应: 响应状态码 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/206" target="_blank" rel="noopener" title="HTTP 206 Partial Content 成功状态响应代码表示请求已成功，并且主体包含所请求的数据区间，该数据区间是在请求的 Range 首部指定的。"><code>206</code></a>，只返回局部的信息.</li>
+<li>除了 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET" target="_blank" rel="noopener" title="HTTP GET 方法请求指定的资源。使用 GET 的请求应该只用于获取数据。"><code>GET</code></a> 请求外，如果匹配到作为一个已被定义的cache键名的响应.</li>
+</ul>
+<p>HTTP/1.1定义的 [<code>Cache-Control</code>]用来区分对缓存机制的支持情况， 请求报头和响应报头都支持这个属性。<br>强制确认缓存：no-cache<br>禁止缓存：no-store<br>公用：public<br>私用：private<br>max-age=<seconds>  ：缓存过期时间.例如图片、css、js等静态资源。<br> must-revalidate：缓存校用<br>Vary: User-Agent头，缓存服务器需要通过UA判断是否使用缓存的页面。</p>
+<p>利用fiddler查看网页的缓存</p>
+<blockquote>
+<p>Request<br>Cache-Control: max-age=0 : 以秒为单位<br>If-Modified-Since: Mon, 19 Nov 2012 08:38:01 GMT : 缓存文件的最后修改时间。<br>If-None-Match: “0693f67a67cc1:0” : 缓存文件的Etag值<br>Cache-Control: no-cache : 不使用缓存<br>Pragma: no-cache : 不使用缓存</p>
+</blockquote>
+<blockquote>
+<p>Response<br>Cache-Control: public : 响应被缓存，并且在多用户间共享，<br>Cache-Control: private : 响应只能作为私有缓存，不能在用户之间共享<br>Cache-Control:no-cache : 提醒浏览器要从服务器提取文档进行验证<br>Cache-Control:no-store : 绝对禁止缓存（用于机密，敏感文件）<br>Cache-Control: max-age=60 : 60秒之后缓存过期（相对时间）<br>Date: Mon, 19 Nov 2012 08:39:00 GMT : 当前response发送的时间<br>Expires: Mon, 19 Nov 2012 08:40:01 GMT : 缓存过期的时间（绝对时间）<br>Last-Modified: Mon, 19 Nov 2012 08:38:01 GMT : 服务器端文件的最后修改时间<br>ETag: “20b1add7ec1cd1:0” : 服务器端文件的Etag值</p>
+</blockquote>
+<p>如果同时存在cache-control和Expires怎么办呢？<br>浏览器总是优先使用cache-control，如果没有cache-control才考虑Expires<br>是否选用缓存<br>按F5刷新浏览器， 浏览器会去Web服务器验证缓存。<br>如果是在地址栏输入网址然后回车，浏览器会”直接使用有效的缓存”, 而不会发http request 去服务器验证缓存.<br>##5. 浏览器解析渲染页面<br>浏览器是一个边解析边渲染的过程。首先浏览器解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。这个过程比较复杂，涉及到两个概念: reflow(回流)和repain(重绘)。DOM节点中的各个元素都是以盒模型的形式存在，这些都需要浏览器去计算其位置和大小等，这个过程称为relow;当盒模型的位置,大小以及其他属性，如颜色,字体,等确定下来之后，浏览器便开始绘制内容，这个过程称为repain。页面在首次加载时必然会经历reflow和repain。reflow和repain过程是非常消耗性能的，尤其是在移动设备上，它会破坏用户体验，有时会造成页面卡顿。所以应该尽可能少的减少reflow和repain。<br><img src="http://upload-images.jianshu.io/upload_images/10521305-fd36d0ffe3bd377d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="775625205-57d4063b7b60d_articlex.png"></p>
+<p>JS的解析是由浏览器中的JS解析引擎完成的。</p>
+<p>JS是单线程运行，也就是说，在同一个时间内只能做一件事，所有的任务都需要排队，前一个任务结束，后一个任务才能开始。但是又存在某些任务比较耗时，如IO读写等，所以需要一种机制可以先执行排在后面的任务，这就是：同步任务(synchronous)和异步任务(asynchronous)。</p>
+<p>JS的执行机制就可以看做是一个主线程加上一个任务队列(task queue)。同步任务就是放在主线程上执行的任务，异步任务是放在任务队列中的任务。所有的同步任务在主线程上执行，形成一个执行栈;异步任务有了运行结果就会在任务队列中放置一个事件；脚本运行时先依次运行执行栈，然后会从任务队列里提取事件，运行任务队列中的任务，这个过程是不断重复的，所以又叫做事件循环(Event loop)。</p>
+<p>浏览器在解析过程中，如果遇到请求外部资源时，如图像,iconfont,JS等。浏览器将重复1-6过程下载该资源。请求过程是异步的，并不会影响HTML文档进行加载，但是当文档加载过程中遇到JS文件，HTML文档会挂起渲染过程，不仅要等到文档中JS文件加载完毕还要等待解析执行完毕，才会继续HTML的渲染过程。</p>
+<p>原因是因为JS有可能修改DOM结构，这就意味着JS执行完成前，后续所有资源的下载是没有必要的，这就是JS阻塞后续资源下载的根本原因。</p>
+<p>CSS文件的加载不影响JS文件的加载，但是却影响JS文件的执行。JS代码执行前浏览器必须保证CSS文件已经下载并加载完毕。</p>
+<p>##6. 优化<br>如何尽快的加载资源？</p>
+<p>答案就是能不从网络中加载的资源就不从网络中加载，当我们合理使用缓存，将资源放在浏览器端，这是最快的方式。如果资源必须从网络中加载，则要考虑缩短连接时间，即DNS优化部分;减少响应内容大小，即对内容进行压缩。另一方面，如果加载的资源数比较少的话，也可以快速的响应用户。当资源到达浏览器之后，浏览器开始进行解析渲染，浏览器中最耗时的部分就是reflow，所以围绕这一部分就是考虑如何减少reflow的次数。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E8%80%85/" rel="next" title="前端开发者">
+                <i class="fa fa-chevron-left"></i> 前端开发者
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/10/hexo/" rel="prev" title="Hexo框架建立个人博客">
+                Hexo框架建立个人博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/01/05/%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B/';
+            this.page.identifier = '2018/01/05/页面展示过程/';
+            this.page.title = '从url到页面';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/01/05/%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B/';
+                this.page.identifier = '2018/01/05/页面展示过程/';
+                this.page.title = '从url到页面';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/01/05/%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B/';
+            this.page.identifier = '2018/01/05/页面展示过程/';
+            this.page.title = '从url到页面';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

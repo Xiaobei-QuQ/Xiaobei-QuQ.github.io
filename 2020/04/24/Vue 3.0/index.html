@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vue3.0 的新特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3.0 尝鲜版">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2020/04/24/Vue%203.0/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Vue3.0 的新特性">
+<meta property="article:published_time" content="2020-04-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-24T02:24:29.633Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2020/04/24/Vue 3.0/"/>
+
+
+
+
+
+  <title>Vue3.0 尝鲜版 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">04月</div>
+			<div class="post-day">24</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Vue/" itemprop="url" rel="index">
+          <span itemprop="name">Vue</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2020/04/24/Vue%203.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue3.0 尝鲜版</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T00:00:00+08:00">
+                2020-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Vue3.0 的新特性</p>
+<a id="more"></a>
+
+<ul>
+<li>Performance：性能更比 Vue 2.0 强。</li>
+<li>Tree shaking support：可以将无用模块“剪辑”，仅打包需要的。</li>
+<li>Composition API：组合 API</li>
+<li>Fragment, Teleport, Suspense：“碎片”，Teleport 即 Protal 传送门，“悬念”</li>
+<li>Better TypeScript support：更优秀的 Ts 支持</li>
+<li>Custom Renderer API：暴露了自定义渲染 API</li>
+</ul>
+<h4 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h4><p>重写了虚拟 Dom 的实现（且保证了兼容性，脱离模版的渲染需求旺盛）。<br>编译模板的优化。<br>更高效的组件初始化。<br>update 性能提高1.3<del>2倍。<br>SSR 速度提高了2</del>3倍。</p>
+<p>编译优化</p>
+<p><a href="https://vue-next-template-explorer.netlify.app/#%7B%22src%22%3A%22%3Cdiv%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cdiv%3E%5Cr%5Cn%5Ct%5Ct%3Cspan%3E%7B%7B%20msg%20%7D%7D%3C%2Fspan%3E%5Cr%5Cn%5Ct%3C%2Fdiv%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%5Ct%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%22%2C%22options%22%3A%7B%22mode%22%3A%22module%22%2C%22prefixIdentifiers%22%3Afalse%2C%22optimizeBindings%22%3Afalse%2C%22hoistStatic%22%3Afalse%2C%22cacheHandlers%22%3Afalse%2C%22scopeId%22%3Anull%7D%7D" target="_blank" rel="noopener">链接 1</a><br><a href="https://vue-next-template-explorer.netlify.app/#%7B%22src%22%3A%22%3Cdiv%3E%5Cr%5Cn%20%20%3Cspan%3Estatic%3C%2Fspan%3E%5Cr%5Cn%20%20%3Cspan%20%3Aid%3D%5C%22hello%5C%22%20class%3D%5C%22bar%5C%22%3E%7B%7B%20msg%20%7D%7D%20%20%20%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%22%2C%22options%22%3A%7B%22mode%22%3A%22module%22%2C%22prefixIdentifiers%22%3Afalse%2C%22optimizeBindings%22%3Afalse%2C%22hoistStatic%22%3Afalse%2C%22cacheHandlers%22%3Afalse%2C%22scopeId%22%3Anull%7D%7D" target="_blank" rel="noopener">链接 2</a><br><a href="https://vue-next-template-explorer.netlify.app/#%7B%22src%22%3A%22%3Cdiv%3E%5Cr%5Cn%20%20%3Cspan%20%40click%3D%5C%22onClick%5C%22%3E%5Cr%5Cn%20%20%20%20%7B%7Bmsg%7D%7D%5Cr%5Cn%20%20%3C%2Fspan%3E%5Cr%5Cn%3C%2Fdiv%3E%5Cr%5Cn%22%2C%22options%22%3A%7B%22mode%22%3A%22module%22%2C%22prefixIdentifiers%22%3Afalse%2C%22optimizeBindings%22%3Afalse%2C%22hoistStatic%22%3Afalse%2C%22cacheHandlers%22%3Afalse%2C%22scopeId%22%3Anull%7D%7D" target="_blank" rel="noopener">事件绑定</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> enum PatchFlags &#123;</span><br><span class="line">  TEXT = <span class="number">1</span>,<span class="comment">// 表示具有动态textContent的元素</span></span><br><span class="line">  CLASS = <span class="number">1</span> &lt;&lt; <span class="number">1</span>,  <span class="comment">// 表示有动态Class的元素</span></span><br><span class="line">  STYLE = <span class="number">1</span> &lt;&lt; <span class="number">2</span>,  <span class="comment">// 表示动态样式（静态如style="color: red"，也会提升至动态）</span></span><br><span class="line">  PROPS = <span class="number">1</span> &lt;&lt; <span class="number">3</span>,  <span class="comment">// 表示具有非类/样式动态道具的元素。</span></span><br><span class="line">  FULL_PROPS = <span class="number">1</span> &lt;&lt; <span class="number">4</span>,  <span class="comment">// 表示带有动态键的道具的元素，与上面三种相斥</span></span><br><span class="line">  HYDRATE_EVENTS = <span class="number">1</span> &lt;&lt; <span class="number">5</span>,  <span class="comment">// 表示带有事件监听器的元素</span></span><br><span class="line">  STABLE_FRAGMENT = <span class="number">1</span> &lt;&lt; <span class="number">6</span>,   <span class="comment">// 表示其子顺序不变的片段（没懂）。</span></span><br><span class="line">  KEYED_FRAGMENT = <span class="number">1</span> &lt;&lt; <span class="number">7</span>, <span class="comment">// 表示带有键控或部分键控子元素的片段。</span></span><br><span class="line">  UNKEYED_FRAGMENT = <span class="number">1</span> &lt;&lt; <span class="number">8</span>, <span class="comment">// 表示带有无key绑定的片段</span></span><br><span class="line">  NEED_PATCH = <span class="number">1</span> &lt;&lt; <span class="number">9</span>,   <span class="comment">// 表示只需要非属性补丁的元素，例如ref或hooks</span></span><br><span class="line">  DYNAMIC_SLOTS = <span class="number">1</span> &lt;&lt; <span class="number">10</span>,  <span class="comment">// 表示具有动态插槽的元素</span></span><br><span class="line">  <span class="comment">// 特殊 FLAGS -------------------------------------------------------------</span></span><br><span class="line">  HOISTED = <span class="number">-1</span>,  <span class="comment">// 特殊标志是负整数表示永远不会用作diff,只需检查 patchFlag === FLAG.</span></span><br><span class="line">  BAIL = <span class="number">-2</span> <span class="comment">// 一个特殊的标志，指代差异算法（没懂）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h4><p>可以将无用模块“剪辑”，仅打包需要的（比如 v-model,用不到就不会打包）。<br>一个简单“HelloWorld”大小仅为：13.5kb<br>11.75kb，仅 Composition API。<br>包含运行时完整功能：22.5kb<br>拥有更多的功能，却比 Vue 2 更迷你。</p>
+<p>注意：Vue3.0 beta 版本已经不支持导入 vue 整个对象</p>
+<h4 id="Composition-API"><a href="#Composition-API" class="headerlink" title="Composition API"></a>Composition API</h4><ul>
+<li>ref</li>
+<li>reactive</li>
+<li>computed</li>
+<li>readonly</li>
+<li>watchEffect</li>
+<li>watch</li>
+</ul>
+<p>与 React Hook 的差别</p>
+<ol>
+<li><p>与 React Hooks 相同级别的逻辑组合功能，但有一些重要的区别。 与 React Hook 不同，setup 函数仅被调用一次，这在性能上比较占优。</p>
+</li>
+<li><p>对调用顺序没什么要求，每次渲染中不会反复调用 Hook 函数，产生的的 GC 压力较小。</p>
+</li>
+<li><p>不必考虑几乎总是需要 useCallback 的问题，以防止传递函数 prop 给子组件的引用变化，导致无必要的重新渲染。</p>
+</li>
+<li><p>React Hook 的闭包陷阱问题，如果用户忘记传递正确的依赖项数组，useEffect 和 useMemo 可能会捕获过时的变量，这不受此问题的影响。 Vue 的自动依赖关系跟踪确保观察者和计算值始终正确无效。</p>
+</li>
+<li><p>不得不提一句，React Hook 里的「依赖」是需要你去手动声明的，而且官方提供了一个 eslint 插件，这个插件虽然大部分时候挺有用的，但是有时候也特别烦人，需要你手动加一行丑陋的注释去关闭它。</p>
+</li>
+</ol>
+<h4 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h4><ul>
+<li>不再限于模板中的单个根节点</li>
+<li>render 函数也可以返回数组了，类似实现了 React.Fragments 的功能 。</li>
+<li>‘Just works’</li>
+</ul>
+<h4 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h4><ul>
+<li>挂在到 html 外层节点，类似于 reaact 的 Portal</li>
+</ul>
+<h4 id="Suspense"><a href="#Suspense" class="headerlink" title="Suspense"></a>Suspense</h4><ul>
+<li>可在嵌套层级中等待嵌套的异步依赖项</li>
+<li>支持 async setup()</li>
+<li>支持异步组件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Suspense fallback&#x3D;&#123;&lt;h1&gt;Loading profile...&lt;&#x2F;h1&gt;&#125;&gt;</span><br><span class="line">  &lt;ProfileDetails &#x2F;&gt;</span><br><span class="line">  &lt;Suspense fallback&#x3D;&#123;&lt;h1&gt;Loading posts...&lt;&#x2F;h1&gt;&#125;&gt;</span><br><span class="line">  	&lt;ProfileTimeline &#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;Suspense&gt;</span><br><span class="line">&lt;&#x2F;Suspense&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Better-TypeScript-support"><a href="#Better-TypeScript-support" class="headerlink" title="Better TypeScript support"></a>Better TypeScript support</h4><ul>
+<li>Vue 3 是用 TypeScript 编写的库，可以享受到自动的类型定义提示</li>
+<li>JavaScript 和 TypeScript 中的 API 是相同的。<ul>
+<li>事实上，代码也基本相同</li>
+</ul>
+</li>
+<li>支持 TSX</li>
+<li>class 组件还会继续支持，但是需要引入 vue-class-component@next，该模块目前还处在 alpha 阶段。</li>
+</ul>
+<h4 id="Custom-Renderer-API"><a href="#Custom-Renderer-API" class="headerlink" title="Custom Renderer API"></a>Custom Renderer API</h4><ul>
+<li>正在进行 NativeScript Vue 集成</li>
+<li>用户可以尝试 WebGL 自定义渲染器，与普通 Vue 应用程序一起使用（Vugel）。</li>
+</ul>
+<h4 id="More"><a href="#More" class="headerlink" title="More"></a>More</h4><ul>
+<li>Docs &amp; Migration Guides</li>
+<li>Router</li>
+<li>Vuex</li>
+<li>cli</li>
+<li>vite</li>
+<li>vue-test-utils</li>
+<li>DevTools</li>
+<li>IDE-Support</li>
+<li>Nuxt</li>
+<li>last 2.7</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/12/promise/" rel="next" title="Promise">
+                <i class="fa fa-chevron-left"></i> Promise
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/26/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="prev" title="性能优化">
+                性能优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2020/04/24/Vue%203.0/';
+            this.page.identifier = '2020/04/24/Vue 3.0/';
+            this.page.title = 'Vue3.0 尝鲜版';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2020/04/24/Vue%203.0/';
+                this.page.identifier = '2020/04/24/Vue 3.0/';
+                this.page.title = 'Vue3.0 尝鲜版';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2020/04/24/Vue%203.0/';
+            this.page.identifier = '2020/04/24/Vue 3.0/';
+            this.page.title = 'Vue3.0 尝鲜版';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance"><span class="nav-number">1.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tree-Shaking"><span class="nav-number">2.</span> <span class="nav-text">Tree Shaking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Composition-API"><span class="nav-number">3.</span> <span class="nav-text">Composition API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fragment"><span class="nav-number">4.</span> <span class="nav-text">Fragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Teleport"><span class="nav-number">5.</span> <span class="nav-text">Teleport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Suspense"><span class="nav-number">6.</span> <span class="nav-text">Suspense</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Better-TypeScript-support"><span class="nav-number">7.</span> <span class="nav-text">Better TypeScript support</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Custom-Renderer-API"><span class="nav-number">8.</span> <span class="nav-text">Custom Renderer API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#More"><span class="nav-number">9.</span> <span class="nav-text">More</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

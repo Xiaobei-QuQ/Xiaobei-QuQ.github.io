@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/social-share.js/1.0.9/css/share.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.0.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=0.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/moo.png?v=0.0.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=0.0.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="North,blog" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="性能优化优化网站性能 资源缓存（使用cdn，利用http缓存机制）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔试题目整理">
+<meta property="og:url" content="https://xiaobei-quq.github.io/2018/11/07/%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="性能优化优化网站性能 资源缓存（使用cdn，利用http缓存机制）">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b0a870abgy1fvm8qol7wsj20cp06cwe9.jpg">
+<meta property="article:published_time" content="2018-11-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-15T05:28:21.176Z">
+<meta property="article:author" content="小北">
+<meta property="article:tag" content="Front-end Developer">
+<meta property="article:tag" content="Coder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/b0a870abgy1fvm8qol7wsj20cp06cwe9.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '0.0.4',
+    sidebar: {"position":"right","display":"always","offset":52,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    since: '2/9/2014 11:30:00',
+    onlineAPI: '',
+    site: {
+      title: '',
+      subtitle: '',
+      author: '小北'
+    },
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    leancloud: {
+      enable: false,
+      appID: '',
+      appKey: ''
+    },
+    favicon: {
+      visibilitychange: true,
+      narmal: '/images/moo.png',
+      hidden: '/images/moo.png',
+      show_text: '[]~(￣▽￣)~*',
+      hide_text: '～(^з^)-☆'
+    }
+  };
+</script>
+
+
+
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+  <link rel="canonical" href="https://xiaobei-quq.github.io/2018/11/07/笔试题目整理/"/>
+
+
+
+
+
+  <title>笔试题目整理 | </title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48084758-7', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-投喂">
+          <a href="/donate/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-cutlery"></i> <br />
+            
+            投喂
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后宫">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mars"></i> <br />
+            
+            后宫
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/message/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-rocket"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      <li class="menu-item search">
+          <form class="search-form">
+            <input name="keyword" type="text" class="search-input" placeholder="站内搜索">
+            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+          </form>
+      </li>
+      <li class="menu-item online"><span id="online-count">?</span>人在线</li>
+    </ul>
+  
+
+  
+</nav>
+
+<div class="site-brand-wrapper" style="background-image: url(/images/bg_img.png)">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <div class="brand">
+        <span class="logo-line-before"><i></i></span>
+        <div class="site-title">
+          <div id="animate" class="animate">
+            
+          </div>
+          <div id="guide" class="guide">
+            
+          </div>
+        </div>
+        <span class="logo-line-after"><i></i></span>
+      </div>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<div class="site-master" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-master-avatar" itemprop="image" src="/images/la.jpg" alt="小北" />
+    <h2 class="site-master-description" itemprop="description">
+        每一个不曾起舞的日子，都是对生命的辜负
+    </h2>
+</div>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">11月</div>
+			<div class="post-day">07</div>
+	</div>
+  
+  <div class="post-badge">
+    
+      <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/JavaScript/" itemprop="url" rel="index">
+          <span itemprop="name">JavaScript</span>
+        </a>
+      </span>
+    
+  </div>
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaobei-quq.github.io/2018/11/07/%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小北">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/la.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">笔试题目整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T00:00:00+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">•</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>优化网站性能 资源缓存（使用cdn，利用http缓存机制）</p>
+<a id="more"></a>
+
+<p>资源压缩 （减少http请求 压缩js css 压缩图片） </p>
+<p>浏览器加载（引用外部CSS文件的link标签，一般会写在<head>内，这是为了能尽早的使<body>内的元素获取样式，优化视觉显示效果。引用外部JS文件的script标签，一般会写在<body>底部，这是为了避免HTML的解析被阻塞，从而使页面元素更快的显示出来。）</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>进程的基本状态 阻塞态 执行态 就绪态 挂起态 创建态 终止态</p>
+<p>进程是cpu资源分配的最小单位，线程是cpu调度的最小单位。线程的粒度小鱼进程，通常多线程比多进程并发性更高，线程和进程都可以并发执行</p>
+<p>osi的七层网络体系结构  应用层 表达层 会话层 传输层 网络层 数据链路层 物理层</p>
+<p>tcp/ip协议的四元组   源IP地址、目的IP地址、源端口、目的端口</p>
+<p>进程就是包换上下文切换的程序执行时间总和** = <strong>CPU加载上下文+CPU执行+CPU保存上下文</strong></p>
+<p><strong>进程和线程都是一个时间段的描述，是CPU工作时间段的描述，不过是颗粒大小不同。</strong></p>
+<hr>
+<p>du -h/b filepath  ls -l/h filepath  读取文件大小</p>
+<hr>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>创建者模式</p>
+<p>工厂方法： 抽象工厂，生成器，原型，单例，结构型模式</p>
+<p>适配器： 适配器，桥接，组合，装饰，外观，享元，代理，行为模式，</p>
+<p>解释器，模板方法： 职责链，命令，迭代器，中介者，备忘录，观察者，状态，策略，访问者。</p>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>AMD和CommonJS规范</p>
+<p>AMD (Asynchronous Module Definition, 异步模块定义) 指定一种机制，在该机制下模块和依赖可以异步加载。这对浏览器端的异步加载尤其适用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(&#39;modal&#39;, [&#39;jQuery&#39;, &#39;dialog&#39;], function($, Dialog)&#123;</span><br><span class="line">    $(&#39;.modal&#39;).show();</span><br><span class="line">    Dialog.open();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>实现AMD的库有｀RequireJS｀ 、｀curl｀ 、｀Dojo｀ 等。</p>
+<p>CommonJS是服务器端模块的规范，Node.js采用了这个规范。Node.JS首先采用了js模块化的概念。</p>
+<p>在一个模块中，存在一个自由的变量”require”，它是一个函数。</p>
+<ul>
+<li>这个”require”函数接收一个模块标识符。</li>
+<li>“require”返回外部模块所输出的API。</li>
+</ul>
+<p>在一个模块中，会存在一个名为”exports”的自由变量，它是一个对象，模块可以在执行的时候把自身的API加入到其中。</p>
+<p>模块必须使用”exports”对象来做为输出的唯一表示。</p>
+<p>CMD（Common Module Definition）是 SeaJS推广过程中产生的。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>排序算法的时间排序 快速排序O(nlog(n))，插入排序O(n^2)，计数排序O(n+k)，冒泡排序O(n^2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;时间复杂度  未解</span><br><span class="line">function fn(x, y, z) &#123;</span><br><span class="line">    if (x &lt;&#x3D; 0) &#123;</span><br><span class="line">      console.log(y, z)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      fn(x - 1, y + 1, z);</span><br><span class="line">      fn(x - 1, y, z + 1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>图的遍历 广度 深度优先搜索算法</p>
+<p>稳定排序算法 冒泡排序 插入排序 归并排序 基数排序 </p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP1.1默认开启长连接，301代表重定向，默认端口是80，HTTP是属于应用层的协议，TCP、UDP是属于运输层的协议、IP是属于网络层的协议</p>
+<p>TCP挥手的时候主动断开一方的状态有FIN_WAIT_1 FIN_WAIT_2 TIME_WAIT CLOSED，不存在的是CLOSED_WAIT</p>
+<p>客户端不缓存图片 Cache-control: no-store   <code>&lt;meta HTTP-EQUIV=&quot;Cache-Control&quot; CONTENT=&quot;no-cache, must-revalidate&quot;&gt;</code>    Cache-control: maxAge=0 Expires设置为过去的时间</p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>escape()除了 ASCII 字母、数字和特定的符号外，对传进来的字符串全部进行转义编码，因此如果想对URL编码，最好不要使用此方法。默认编码unicode</p>
+<!-- more -->
+
+
+
+<p>encodeURI() 用于编码整个URI,因为URI中的合法字符都不会被编码转换。默认编码utf-8</p>
+<p>encodeURIComponent方法在编码单个URIComponent（指请求参数）应当是最常用的，它可以讲参数中的中文、特殊字符进行转义，而不会影响整个URL。默认编码utf-8</p>
+<h2 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h2><p>触发Reflow</p>
+<p>obj.style.height = ‘100px’      </p>
+<p>触发repaint</p>
+<p>obj.style.color = ‘red’</p>
+<hr>
+<h2 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h2><p>Trident为IE内核</p>
+<hr>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>localStorage HTML5本地存储web storage特性的API之一，用于将大量数据（最大5M）保存在浏览器中，保存后数据永远存在不会失效过期，除非用 js手动清除。不参与网络传输。一般用于性能优化，可以保存图片、js、css、html 模板、大量数据。</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>Git是分布式的，Svn是中心式</p>
+<p>Git没有一个全局版本号，而SVN有</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>h5新增标签</p>
+<p>section  nav  artical  aside  header  footer  main  video  source  audio  svg  math  canvas  </p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>盒子模型  box-sizing</p>
+<ul>
+<li>content-box: width == 内容区宽度 </li>
+<li>border-box: width == 内容区宽度 + padding 宽度 + border 宽度</li>
+</ul>
+<p>font-family CSS属性<code>font-family</code>允许您通过给定一个有先后顺序的，由字体名或者字体族名组成的列表来为选定的元素设置字体。</p>
+<p>属性的值用逗号隔开。浏览器会选择列表中第一个该计算机上有安装的字体，或者是通过 @font-face指定的可以直接下载的字体。</p>
+<p>line-height CSS属性用于设置多行元素的空间量，比如文本。对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的inline元素，它用于计算行盒（line box）的高度。</p>
+<hr>
+<p>完成如下布局</p>
+<p><a href="https://jsbin.com/gazuhi/edit?html,css,output" target="_blank" rel="noopener">https://jsbin.com/gazuhi/edit?html,css,output</a></p>
+<p><img src="http://ww1.sinaimg.cn/large/b0a870abgy1fvm8qol7wsj20cp06cwe9.jpg" alt=""></p>
+<hr>
+<p>BFC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">display:inline-block;  </span><br><span class="line">float: left;  float: right;  </span><br><span class="line">position: absolute;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>通常，元素的offsetHeight是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），不包含:before或:after等伪类元素的高度。</p>
+<p>这个属性是只读属性，对于没有定义CSS或者内联布局盒子的元素为0，否则，它是元素内部的高度(单位像素)，包含内边距，但不包括水平滚动条、边框和外边距。</p>
+<p>clientHeight可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算.</p>
+<p><strong>Element.scrollHeight</strong> 这个只读属性是一个元素内容高度的度量，包括由于溢出导致的视图中不可见内容。</p>
+<p>scrollHeight 的值等于该元素在不使用滚动条的情况下为了适应视口中所用内容所需的最小高度。 </p>
+<p>如果元素滚动到底，下面等式返回true，没有则返回false.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.scrollHeight - element.scrollTop &#x3D;&#x3D;&#x3D; element.clientHeight</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>reletive fixed absolute staic </p>
+<p>static（静态定位）：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</p>
+<p>elative（相对定位）：生成相对定位的元素，通过top,bottom,left,right的设置相对于其正常（原先本身）位置进行定位。可通过z-index进行层次分级。　　</p>
+<p>absolute（绝对定位）：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。可通过z-index进行层次分级。</p>
+<p>fixed（固定定位）：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。可通过z-index进行层次分级。</p>
+<p>inline和inline-block的区别</p>
+<p>inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。设置width,height属性无效。margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。</p>
+<p>inline-block简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。</p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>typeof返回的数据类型 number string boolean object function undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125; + &#39;b&#39; &gt; &#123;&#125; + &#39;a&#39;)  true</span><br><span class="line">&#123;&#125; + &#39;b&#39; &gt; &#123;&#125; + &#39;a&#39;  false</span><br></pre></td></tr></table></figure>
+
+
+<p>this  总是指向函数的直接调用者而非间接调用者</p>
+<p>有new的时候还指向new出来的对象</p>
+<p>在事件中，总是指向触发这个事件的对象</p>
+<p>在函数运行时自动生成的一个内部对象，只能在函数内部使用</p>
+<p>‘foo’ == new function(){return new String(‘foo’)}  true</p>
+<p>!0 true </p>
+<p>[] == 0  true</p>
+<p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</p>
+<p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；</p>
+<p>apply 、 call 、bind 三者都可以利用后续参数传参；</p>
+<p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。</p>
+<hr>
+<p>箭头函数不能做构造函数，因为this的指向问题</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 不使用第三个值交换变量值</span><br><span class="line">[a,b] &#x3D; [b,a]</span><br><span class="line"></span><br><span class="line">a &#x3D; a + b</span><br><span class="line">b &#x3D; a - b</span><br><span class="line">a &#x3D; a - b</span><br><span class="line"></span><br><span class="line">a ^&#x3D; b;</span><br><span class="line">b ^&#x3D; a;</span><br><span class="line">a ^&#x3D; b;</span><br><span class="line"></span><br><span class="line">a &#x3D; &#123;a:b,b:a&#125;;</span><br><span class="line">b &#x3D; a.b;</span><br><span class="line">a &#x3D; a.a;</span><br><span class="line"></span><br><span class="line">a &#x3D; [a,b];</span><br><span class="line">b &#x3D; a[0];</span><br><span class="line">a &#x3D; a[1];</span><br><span class="line"></span><br><span class="line">a &#x3D; [b,b&#x3D;a][0];</span><br><span class="line"></span><br><span class="line">[a,b] &#x3D; [b,a];</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取url参数</span><br><span class="line">function GetRequest() &#123;</span><br><span class="line">    var url &#x3D; location.search; &#x2F;&#x2F;获取url中&quot;?&quot;符后的字串</span><br><span class="line">    var theRequest &#x3D; &#123;&#125;</span><br><span class="line">    if (url.indexOf(&quot;?&quot;) !&#x3D; -1) &#123;</span><br><span class="line">        var str &#x3D; url.substr(1);</span><br><span class="line">        strs &#x3D; str.split(&quot;&amp;&quot;);</span><br><span class="line">        for(var i &#x3D; 0; i &lt; strs.length; i ++) &#123;</span><br><span class="line">            theRequest[strs[i].split(&quot;&#x3D;&quot;)[0]] &#x3D; unescape(strs[i].split(&quot;&#x3D;&quot;)[1]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return theRequest;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function parseQuery(url) &#123;</span><br><span class="line">    var queryObj&#x3D;&#123;&#125;;</span><br><span class="line">    var reg&#x3D;&#x2F;[?&amp;]([^&#x3D;&amp;#]+)&#x3D;([^&amp;#]*)&#x2F;g;</span><br><span class="line">    var querys&#x3D;url.match(reg);</span><br><span class="line">    if(querys)&#123;</span><br><span class="line">        for(var i in querys)&#123;</span><br><span class="line">            var query&#x3D;querys[i].split(&#39;&#x3D;&#39;);</span><br><span class="line">            var key&#x3D;query[0].substr(1),</span><br><span class="line">                value&#x3D;query[1];</span><br><span class="line">            queryObj[key]?queryObj[key]&#x3D;[].concat(queryObj[key],value):queryObj[key]&#x3D;value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return queryObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数组反转+字符串拼接</span><br><span class="line">(function()&#123;</span><br><span class="line">  let array &#x3D; arguments</span><br><span class="line">  var length &#x3D; array.length,</span><br><span class="line">      j,temp,</span><br><span class="line">      result &#x3D; []</span><br><span class="line">  for(var i &#x3D; 0;i&lt;length;i++)&#123;</span><br><span class="line">    j &#x3D; i;</span><br><span class="line">    temp &#x3D; array[i]</span><br><span class="line">    while(j&gt;0 &amp;&amp; array[j-1] &gt; temp)&#123;</span><br><span class="line">      array[j] &#x3D; array[j-1]</span><br><span class="line">      j--</span><br><span class="line">    &#125;</span><br><span class="line">    array[j] &#x3D; temp</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  for(var i &#x3D; 0;i&lt;length;i++)&#123;</span><br><span class="line">    result.push(array[i],array[length-1-i].toString())</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(result)</span><br><span class="line">  return result</span><br><span class="line">&#125;)(1,8,3,2)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>垃圾回收</p>
+<p>内存泄露 内存泄露是指你的应用使用资源之后没有及时释放，导致应用内存中持有了不需要的资源，这是一种状态描述。程序中使用闭包过多，垃圾回收无法回收变量。</p>
+<hr>
+<p>DOM2级事件规定事件流包括三个阶段，事件捕获阶段，处于目标阶段，事件冒泡阶段，首先发生的是事件捕获，为截取事件提供机会，然后是实际目标接收事件，最后是冒泡阶段。</p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>不像大多数的模块打包机，webpack是收把项目当作一个整体，通过一个给定的的主文件，webpack将从这个文件开始找到项目的所有依赖文件，使用loaders处理它们，最后打包成一个或多个浏览器可识别的js文件</p>
+<p>loaders负责的是处理源文件的如css、jsx，一次处理一个文件。而plugins并不是直接操作单个文件，它直接对整个构建过程起作用（参与到webpack打包的各个生命周期）。</p>
+<p>长缓存：浏览器在用户访问页面的时候，为了加快加载速度，会对用户访问的静态资源进行存储，但是每一次代码升级或是更新，都需要浏览器去下载新的代码，最方便和简单的更新方式就是引入新的文件名称。在webpack中可以在output纵输出的文件指定chunkhash,并且分离经常更新的代码和框架代码。通过NameModulesPlugin或是HashedModuleIdsPlugin使再次打包文件名不变。</p>
+<p>tree-shaking：：Tree-shaking是指在打包中去除那些引入了，但是在代码中没有被用到的那些死代码。在webpack中Tree-shaking是通过uglifySPlugin来Tree-shaking JS。Css需要使用Purify-CSS。</p>
+<p>模块热更新是webpack的一个功能，他可以使得代码修改过后不用刷新浏览器就可以更新，是高级版的自动刷新浏览器。</p>
+<p>webpack-dev-server使用内存来存储webpack开发环境下的打包文件，并且可以使用模块热更新，他比传统的http服务对开发更加简单高效。</p>
+<p>bundle是由webpack打包出来的文件，chunk是指webpack在进行模块的依赖分析的时候，代码分割出来的代码块。module是开发中的单个模块。</p>
+<p><strong>Nginx</strong>是一个异步框架的 <a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8" target="_blank" rel="noopener">Web服务器</a>，也可以用作<a href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86" target="_blank" rel="noopener">反向代理</a>，<a href="https://zh.wikipedia.org/wiki/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1" target="_blank" rel="noopener">负载平衡器</a> 和 <a href="https://zh.wikipedia.org/wiki/HTTP%E7%BC%93%E5%AD%98" target="_blank" rel="noopener">HTTP缓存</a>。</p>
+<p>Nginx使用异步事件驱动的方法来处理请求。Nginx的模块化事件驱动架构<a href="https://zh.wikipedia.org/wiki/Nginx#cite_note-aosabook-12" target="_blank" rel="noopener">[12]</a>可以在高负载下提供更可预测的性能。Nginx是一款面向性能设计的HTTP服务器，相较于<a href="https://zh.wikipedia.org/wiki/Apache_HTTP_Server" target="_blank" rel="noopener">Apache</a>、<a href="https://zh.wikipedia.org/wiki/Lighttpd" target="_blank" rel="noopener">lighttpd</a>具有占有<a href="https://zh.wikipedia.org/wiki/%E5%86%85%E5%AD%98" target="_blank" rel="noopener">内存</a>少，稳定性高等优势。充分使用异步逻辑从而削减了上下文调度开销，所以并发服务能力更强。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div class="post-share">分享到：</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="小北 微信扫一扫，向我赞赏"/>
+        <p>微信扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="小北 支付宝扫一扫，向我赞赏"/>
+        <p>支付宝扫一扫，向我赞赏</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/20/%E6%83%85%E7%BB%AA/" rel="next" title="抵抗深渊">
+                <i class="fa fa-chevron-left"></i> 抵抗深渊
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/07/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/" rel="prev" title="面试题目整理">
+                面试题目整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <div class="disqus-loading">
+          <strong>Disqus 加载中...</strong>
+          <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        if (disqus_config) {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/11/07/%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/';
+            this.page.identifier = '2018/11/07/笔试题目整理/';
+            this.page.title = '笔试题目整理';
+          };
+          if (window.DISQUS) {
+            $('.disqus-loading').remove();
+            window.DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.url = 'https://xiaobei-quq.github.io/2018/11/07/%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/';
+                this.page.identifier = '2018/11/07/笔试题目整理/';
+                this.page.title = '笔试题目整理';
+              }
+            });
+          }
+        }
+        else {
+          var disqus_config = function () {
+            this.page.url = 'https://xiaobei-quq.github.io/2018/11/07/%E7%AC%94%E8%AF%95%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/';
+            this.page.identifier = '2018/11/07/笔试题目整理/';
+            this.page.title = '笔试题目整理';
+          };
+          var d = document, s = d.createElement('script');
+          s.src = 'https://North,blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', '' + +new Date());
+          (d.head || d.body).appendChild(s);
+        }
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/boy2.png"
+                alt="小北" />
+            
+              <p class="site-author-name" itemprop="name">小北</p>
+              <p class="site-description motion-element" itemprop="description">拿来长岛冰茶换我半晚安睡</p>
+          </div>
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Xiaobei-QuQ" target="_blank" title="GitHub" data-balloon="GitHub" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WybzNFmPfsYi5zi" target="_blank" title="Twitter" data-balloon="Twitter" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="2864181994" target="_blank" title="QQ" data-balloon="QQ" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/lovectrl" target="_blank" title="Telegram Channel" data-balloon="Telegram Channel" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-telegram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="更多" data-balloon="更多" data-balloon-pos="up">
+                    
+                      <i class="fa fa-fw fa-globe"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+            
+
+          </nav>
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.png" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number">1.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">2.</span> <span class="nav-text">操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">3.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#规范"><span class="nav-number">4.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">5.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">6.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码"><span class="nav-number">7.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器渲染机制"><span class="nav-number">8.</span> <span class="nav-text">浏览器渲染机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器内核"><span class="nav-number">9.</span> <span class="nav-text">浏览器内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">10.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">11.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">12.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">13.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript"><span class="nav-number">14.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack"><span class="nav-number">15.</span> <span class="nav-text">webpack</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-image"></div>
+      <div class="footer-inner">
+        <p>博客已萌萌哒运行<span id="since"></span><span class="my-face">(●'◡'●)ﾉ♥</span></p>
+<p>custom text</p>
+
+<p>© <span itemprop="copyrightYear">2020</span> .
+    由 <a href="https://hexo.io/" target="_blank" class="external" rel="nofollow">Hexo</a> 强力驱动.
+    Theme By <a href="https://github.com/DIYgod/hexo-theme-sagiri" target="_blank" class="external" rel="nofollow">Sagiri</a> v0.0.4.
+    <a href="/sitemap.xml" target="_blank">站点地图</a>.
+    xxxx.
+</p>
+<p>Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by <span class="author" itemprop="copyrightHolder">小北</span>. </p>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    <canvas id="evanyou"></canvas>
+    <canvas id="live2d" width="150" height="400" class="live2d"></canvas>
+
+    
+
+  </div>
+
+  <script type="text/javascript" src="/js/sagiri.min.js?v=0.0.4"></script>
+
+  
+
+
+
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
